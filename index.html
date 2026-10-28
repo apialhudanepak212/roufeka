@@ -265,6 +265,24 @@
       padding: 5px 12px;
     }
 
+    /* --- DEFINISI ANIMASI MASUK KONTEN (FADE & ZOOM HALUS) --- */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(15px) scale(0.97);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Ketika slide aktif, jalankan animasi */
+    .swipe-slide.active-slide .animate-in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Efek jeda waktu (stagger) biar elemen di dalam contentbox muncul bergantian dengan rapi */
+    .swipe-slide.active-slide .delay-1 { transition-delay: 0.1s; }
+    .swipe-slide.active-slide .delay-2 { transition-delay: 0.2s; }
+    .swipe-slide.active-slide .delay-3 { transition-delay: 0.3s; }
+
     /* Styling Elemen Slide 1 (Wayang) */
     .top-section {
       display: flex;
@@ -360,7 +378,7 @@
       background: rgba(198, 166, 106, 0.4);
     }
 
-    /* --- CONTENTBOX GAMBAR TANPA SHADOW, DENGAN GARIS TEPI #f7f3ea --- */
+    /* --- CONTENTBOX GAMBAR DENGAN GARIS TEPI #f7f3ea --- */
     .slide-content-box {
       width: 100%;
       height: 100%;
@@ -488,17 +506,17 @@
         <div class="swipe-container" id="swipeContainer">
           
           <!-- SLIDE 1 (Wayang & Nama) -->
-          <div class="swipe-slide">
-            <div class="top-section">
+          <div class="swipe-slide active-slide">
+            <div class="top-section animate-in delay-1">
               <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
               <h2 class="wedding-invitation-title">WEDDING INVITATION</h2>
             </div>
             
-            <div class="wayang-container">
+            <div class="wayang-container animate-in delay-2">
               <img src="wayang.png" alt="Ilustrasi Wayang" class="wayang-img" onerror="this.style.display='none'">
             </div>
 
-            <div class="couple-textbox">
+            <div class="couple-textbox animate-in delay-3">
               <h3 class="couple-names-aston">Rouf & Eka</h3>
               <p class="couple-date-sub">22.11.2026</p>
             </div>
@@ -506,7 +524,7 @@
 
           <!-- SLIDE 2 (Materi: Salam & Profil Mempelai) -->
           <div class="swipe-slide">
-            <div class="slide-content-box">
+            <div class="slide-content-box animate-in delay-1">
               <h3 class="slide-title">Kedua Mempelai</h3>
               <p class="greeting-text">Assalamualaikum Wr Wb</p>
               <p class="desc-text">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri acara pernikahan putra-putri kami:</p>
@@ -527,7 +545,7 @@
 
           <!-- SLIDE 3 (Materi: Waktu & Tempat) -->
           <div class="swipe-slide">
-            <div class="slide-content-box">
+            <div class="slide-content-box animate-in delay-1">
               <h3 class="slide-title">Waktu & Tempat</h3>
               <p class="desc-text">Insya Allah acara pernikahan kami akan diselenggarakan pada:</p>
               
@@ -567,6 +585,7 @@
     const openButton = document.getElementById("openInvitation");
     const backButton = document.getElementById("backToCover");
     const swipeContainer = document.getElementById("swipeContainer");
+    const slides = document.querySelectorAll(".swipe-slide");
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
     const dots = document.querySelectorAll(".dot");
@@ -597,17 +616,27 @@
       swipeContainer.scrollBy({ left: -swipeContainer.clientWidth, behavior: 'smooth' });
     });
 
-    // Update indikator titik (dots) saat digeser (swipe atau klik panah)
+    // Update kelas aktif untuk animasi & indikator dots saat digeser
     swipeContainer.addEventListener("scroll", () => {
       const scrollPos = swipeContainer.scrollLeft;
       const slideWidth = swipeContainer.clientWidth;
       const activeIndex = Math.round(scrollPos / slideWidth);
 
+      // Atur dots
       dots.forEach((dot, index) => {
         if (index === activeIndex) {
           dot.classList.add("active");
         } else {
           dot.classList.remove("active");
+        }
+      });
+
+      // Atur animasi slide aktif
+      slides.forEach((slide, index) => {
+        if (index === activeIndex) {
+          slide.classList.add("active-slide");
+        } else {
+          slide.classList.remove("active-slide");
         }
       });
     });
