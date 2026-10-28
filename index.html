@@ -155,7 +155,7 @@
     .open-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
     .open-button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
     
-    /* --- HALAMAN KEDUA (DETAIL / SESUAI GAMBAR REFERENSI) --- */
+    /* --- HALAMAN KEDUA (DETAIL) --- */
     .details {
       display: flex;
       flex-direction: column;
@@ -168,7 +168,6 @@
       transform: scale(1.05);
       transition: opacity .6s ease, transform .6s ease, visibility .6s;
       overflow: hidden;
-      /* Background coklat transparan sesuai permintaan */
       background: rgba(75, 45, 20, 0.45);
     }
 
@@ -237,7 +236,7 @@
       background: rgba(70, 38, 16, 0.85);
       border: 1px solid rgba(198, 166, 106, 0.6);
       border-radius: 12px;
-      padding: 16px 12px;
+      padding: 14px 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
       display: flex;
       flex-direction: column;
@@ -247,9 +246,9 @@
     }
 
     .couple-names-aston {
-      color: #f7f3ea;
+      color: #f7f3ea; /* Warna diubah menjadi #f7f3ea */
       font-family: "AstonScript", cursive;
-      font-size: clamp(2.4rem, 9vw, 3.2rem);
+      font-size: clamp(1.8rem, 7vw, 2.4rem); /* Ukuran font dikecilkan */
       line-height: 1.1;
       font-weight: bold;
     }
@@ -257,11 +256,11 @@
     .couple-date-sub {
       color: #e7d6ae;
       font-family: "Cormorant Garamond", serif;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       letter-spacing: 0.25em;
-      margin-top: 8px;
+      margin-top: 6px;
       position: relative;
-      padding-top: 6px;
+      padding-top: 5px;
     }
 
     .couple-date-sub::before {
@@ -303,7 +302,7 @@
       <div></div>
     </section>
 
-    <!-- HALAMAN KEDUA (DETAIL SESUAI GAMBAR REFERENSI) -->
+    <!-- HALAMAN KEDUA (DETAIL) -->
     <section class="details" id="details" aria-label="Detail mempelai" aria-hidden="true">
       <div class="top-section">
         <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
