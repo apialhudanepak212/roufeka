@@ -91,7 +91,7 @@
       height: 100%;
     }
 
-    /* Cover / Halaman Pertama (9:16, No Scroll) */
+    /* Cover / Halaman Utama (Main Page) */
     .cover {
       display: flex; 
       flex-direction: column; 
@@ -155,13 +155,13 @@
     .open-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
     .open-button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
     
-    /* --- HALAMAN KEDUA (DETAIL) --- */
+    /* --- KONTAINER HALAMAN KEDUA (MULTI-SLIDE SWIPE) --- */
     .details {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 24px 20px;
+      padding: 20px 16px;
       text-align: center;
       opacity: 0;
       visibility: hidden;
@@ -177,6 +177,60 @@
       transform: scale(1);
     }
 
+    /* Header atas di dalam halaman detail */
+    .details-top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.65rem;
+      color: rgba(231, 214, 174, 0.8);
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid rgba(198, 166, 106, 0.3);
+      padding-bottom: 8px;
+    }
+
+    .back-button { 
+      background: none; 
+      border: none; 
+      color: rgba(231, 214, 174, 0.8); 
+      font-size: 0.65rem; 
+      cursor: pointer; 
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .back-button:hover { color: #f7f3ea; }
+
+    /* Area Swipe Container (Horizontal Slider) */
+    .swipe-container {
+      display: flex;
+      width: 100%;
+      height: 84%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 0;
+      align-items: center;
+      scrollbar-width: none; /* Firefox */
+    }
+    .swipe-container::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+
+    /* Masing-masing Slide */
+    .swipe-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      scroll-snap-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 4px;
+    }
+
+    /* Styling Elemen Slide 1 (Wayang) */
     .top-section {
       display: flex;
       flex-direction: column;
@@ -186,22 +240,22 @@
 
     .gunungan-img { 
       display: block; 
-      width: 38px; 
-      max-height: 50px; 
+      width: 34px; 
+      max-height: 45px; 
       object-fit: contain; 
-      margin-bottom: 6px; 
+      margin-bottom: 4px; 
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); 
     }
 
     .wedding-invitation-title {
       color: #e7d6ae;
       font-family: "Cormorant Garamond", serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       position: relative;
       width: 100%;
-      padding-bottom: 10px;
+      padding-bottom: 8px;
     }
 
     .wedding-invitation-title::after {
@@ -220,35 +274,33 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      margin: 10px 0;
+      margin: 6px 0;
     }
 
     .wayang-img {
-      max-width: 98%; /* Diperbesar dari sebelumnya */
-      max-height: 390px; /* Diperbesar dari sebelumnya */
+      max-width: 95%;
+      max-height: 350px;
       object-fit: contain;
       filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
     }
     
-    /* Textbox Coklat Mempelai di Bawah */
     .couple-textbox {
       width: 100%;
       background: rgba(70, 38, 16, 0.85);
       border: 1px solid rgba(198, 166, 106, 0.6);
       border-radius: 12px;
-      padding: 14px 12px;
+      padding: 12px 10px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
       display: flex;
       flex-direction: column;
       align-items: center;
       backdrop-filter: blur(4px);
-      margin-bottom: 10px;
     }
 
     .couple-names-aston {
       color: #f7f3ea;
       font-family: "AstonScript", cursive;
-      font-size: clamp(1.8rem, 7vw, 2.4rem);
+      font-size: clamp(1.8rem, 7vw, 2.3rem);
       line-height: 1.1;
       font-weight: bold;
     }
@@ -256,11 +308,11 @@
     .couple-date-sub {
       color: #e7d6ae;
       font-family: "Cormorant Garamond", serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 0.25em;
-      margin-top: 6px;
+      margin-top: 5px;
       position: relative;
-      padding-top: 5px;
+      padding-top: 4px;
     }
 
     .couple-date-sub::before {
@@ -273,23 +325,105 @@
       background: rgba(198, 166, 106, 0.4);
     }
 
-    .back-button { 
-      background: none; 
-      border: none; 
-      color: rgba(231, 214, 174, 0.7); 
-      font-size: 0.65rem; 
-      cursor: pointer; 
-      letter-spacing: 0.1em;
-      transition: color 0.2s;
+    /* Styling untuk Slide 2 & Seterusnya (Materi Tambahan) */
+    .slide-content-box {
+      width: 100%;
+      height: 100%;
+      background: rgba(70, 38, 16, 0.75);
+      border: 1px solid rgba(198, 166, 106, 0.4);
+      border-radius: 12px;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      backdrop-filter: blur(4px);
+      overflow-y: auto;
     }
-    .back-button:hover { color: #f7f3ea; }
+
+    .slide-title {
+      color: var(--gold-light);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(198, 166, 106, 0.3);
+      width: 100%;
+      padding-bottom: 6px;
+    }
+
+    .greeting-text {
+      font-family: "JawaPalsu", cursive, serif;
+      font-size: 1.25rem;
+      color: #f4ead6;
+      margin-bottom: 8px;
+    }
+
+    .desc-text {
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: #deded5;
+      margin-bottom: 14px;
+    }
+
+    .person-card {
+      width: 100%;
+      margin: 6px 0;
+      padding: 10px;
+      background: rgba(40, 20, 10, 0.4);
+      border-radius: 8px;
+      border: 1px solid rgba(198, 166, 106, 0.2);
+    }
+
+    .person-role {
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .person-name {
+      font-family: "Great Vibes", cursive;
+      font-size: 1.8rem;
+      color: var(--cream);
+      margin: 2px 0;
+    }
+
+    .person-parents {
+      font-size: 0.7rem;
+      color: #d5d4ca;
+      line-height: 1.4;
+    }
+
+    /* Indikator Titik (Dots) Navigasi Swipe */
+    .swipe-dots {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-top: 4px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(231, 214, 174, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      width: 18px;
+      border-radius: 4px;
+      background: #e7d6ae;
+    }
   </style>
 </head>
 <body>
   <main class="invitation" id="invitation">
     <div class="grain" aria-hidden="true"></div>
     
-    <!-- HALAMAN PERTAMA (COVER) -->
+    <!-- MAIN PAGE / HALAMAN UTAMA (COVER) -->
     <section class="cover" id="cover" aria-label="Sampul undangan">
       <div></div>
       <div class="cover-main">
@@ -302,23 +436,85 @@
       <div></div>
     </section>
 
-    <!-- HALAMAN KEDUA (DETAIL) -->
-    <section class="details" id="details" aria-label="Detail mempelai" aria-hidden="true">
-      <div class="top-section">
-        <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
-        <h2 class="wedding-invitation-title">WEDDING INVITATION</h2>
-      </div>
+    <!-- HALAMAN KEDUA (DETAIL DENGAN SISTEM SWIPE / GESER KESAMPING) -->
+    <section class="details" id="details" aria-label="Detail undangan" aria-hidden="true">
       
-      <div class="wayang-container">
-        <img src="wayang.png" alt="Ilustrasi Wayang" class="wayang-img" onerror="this.style.display='none'">
+      <!-- Bar Navigasi Atas -->
+      <div class="details-top-bar">
+        <span>← Geser untuk info lain →</span>
+        <button class="back-button" id="backToCover" type="button">Kembali ke Sampul</button>
       </div>
 
-      <div class="couple-textbox">
-        <h3 class="couple-names-aston">Rouf & Eka</h3>
-        <p class="couple-date-sub">22.11.2026</p>
+      <!-- KONTAINER SLIDE GESER (HORIZONTAL SWIPE) -->
+      <div class="swipe-container" id="swipeContainer">
+        
+        <!-- SLIDE 1 (Sesuai Desain Terakhir: Wayang & Nama) -->
+        <div class="swipe-slide">
+          <div class="top-section">
+            <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
+            <h2 class="wedding-invitation-title">WEDDING INVITATION</h2>
+          </div>
+          
+          <div class="wayang-container">
+            <img src="wayang.png" alt="Ilustrasi Wayang" class="wayang-img" onerror="this.style.display='none'">
+          </div>
+
+          <div class="couple-textbox">
+            <h3 class="couple-names-aston">Rouf & Eka</h3>
+            <p class="couple-date-sub">22.11.2026</p>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 (Materi: Salam & Profil Mempelai) -->
+        <div class="swipe-slide">
+          <div class="slide-content-box">
+            <h3 class="slide-title">Kedua Mempelai</h3>
+            <p class="greeting-text">Assalamualaikum Wr Wb</p>
+            <p class="desc-text">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri acara pernikahan putra-putri kami:</p>
+            
+            <div class="person-card">
+              <span class="person-role">Mempelai Pria</span>
+              <h4 class="person-name">Muhammad Roúf</h4>
+              <p class="person-parents">Putra pertama dari<br>Bpk. Kosim & Ibu Ponisih</p>
+            </div>
+
+            <div class="person-card">
+              <span class="person-role">Mempelai Wanita</span>
+              <h4 class="person-name">Eka Kalista Nur Agustin</h4>
+              <p class="person-parents">Putri pertama dari<br>Bpk. Karsidi & Ibu Mukariyah</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 (Materi: Waktu & Lokasi Acara / Tambahan Lainnya) -->
+        <div class="swipe-slide">
+          <div class="slide-content-box">
+            <h3 class="slide-title">Waktu & Tempat</h3>
+            <p class="desc-text">Insya Allah acara pernikahan kami akan diselenggarakan pada:</p>
+            
+            <div class="person-card">
+              <span class="person-role">Akad Nikah</span>
+              <p class="person-name" style="font-size: 1.4rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">08.00 WIB</p>
+              <p class="person-parents">Minggu, 22 November 2026</p>
+            </div>
+
+            <div class="person-card">
+              <span class="person-role">Resepsi</span>
+              <p class="person-name" style="font-size: 1.4rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">11.00 - Selesai</p>
+              <p class="person-parents">Bertempat di Kediaman Mempelai</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <button class="back-button" id="backToCover" type="button">← Kembali ke sampul</button>
+      <!-- Indikator Titik (Dots) di Bawah -->
+      <div class="swipe-dots" id="swipeDots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
     </section>
   </main>
   
@@ -328,7 +524,10 @@
     const details = document.getElementById("details");
     const openButton = document.getElementById("openInvitation");
     const backButton = document.getElementById("backToCover");
+    const swipeContainer = document.getElementById("swipeContainer");
+    const dots = document.querySelectorAll(".dot");
 
+    // Buka Undangan dari Cover
     openButton.addEventListener("click", () => {
       invitation.classList.add("opened");
       cover.classList.add("hidden");
@@ -336,11 +535,29 @@
       details.setAttribute("aria-hidden", "false");
     });
 
+    // Kembali ke Cover
     backButton.addEventListener("click", () => {
       invitation.classList.remove("opened");
       details.classList.remove("visible");
       details.setAttribute("aria-hidden", "true");
       cover.classList.remove("hidden");
+      // Reset posisi swipe ke awal
+      swipeContainer.scrollTo({ left: 0, behavior: 'smooth' });
+    });
+
+    // Update indikator titik (dots) saat digeser (swipe)
+    swipeContainer.addEventListener("scroll", () => {
+      const scrollPos = swipeContainer.scrollLeft;
+      const slideWidth = swipeContainer.clientWidth;
+      const activeIndex = Math.round(scrollPos / slideWidth);
+
+      dots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.add("active");
+        } else {
+          dot.classList.remove("active");
+        }
+      });
     });
   </script>
 </body>
