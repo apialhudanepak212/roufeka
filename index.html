@@ -18,6 +18,14 @@
       font-style: normal;
     }
 
+    /* Definisi Custom Font Jawa Palsu */
+    @font-face {
+      font-family: 'JawaPalsu';
+      src: url('jawapalsu.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     :root {
       --forest: #17251f;
       --forest-soft: #23372e;
@@ -37,7 +45,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; /* Mencegah scroll total pada body */
+      overflow: hidden;
     }
     button { font: inherit; }
 
@@ -48,7 +56,7 @@
       width: 100%;
       max-width: 410px;
       height: 100vh;
-      max-height: 730px; /* Menjaga rasio mendekati 9:16 */
+      max-height: 730px;
       aspect-ratio: 9 / 16;
       overflow: hidden;
       background: var(--forest);
@@ -108,7 +116,6 @@
       width: 100%;
     }
     
-    /* Ukuran font mempelai diperbesar dan menggunakan AstonScript */
     .names {
       margin: 10px 0;
       color: #54370E;
@@ -127,7 +134,6 @@
       color: #54370E; 
     }
     
-    /* Tanggal dipindah ke agak bawah, tepat di atas tombol buka undangan */
     .date { 
       color: #54370E; 
       font-family: "Cormorant Garamond", serif; 
@@ -160,7 +166,7 @@
       visibility: hidden;
       transform: scale(1.05);
       transition: opacity .6s ease, transform .6s ease, visibility .6s;
-      overflow-y: auto; /* Scroll khusus di dalam konten teks halaman kedua jika layar sangat pendek */
+      overflow-y: auto;
     }
 
     .details.visible {
@@ -181,8 +187,15 @@
     
     .gunungan-img { display: block; width: 48px; max-height: 60px; object-fit: contain; margin: 10px auto; filter: drop-shadow(0 3px 8px #0004); }
     
-    .arabic-greeting { color: var(--gold-light); font: 400 1.35rem "Cormorant Garamond", serif; margin-bottom: 4px; }
-    .greeting { color: #f4ead6; font: 400 1.4rem "Cormorant Garamond", serif; line-height: 1.2; }
+    /* Mengganti font salam menggunakan Jawa Palsu */
+    .greeting { 
+      color: #f4ead6; 
+      font-family: "JawaPalsu", cursive, serif; 
+      font-size: 1.5rem; 
+      line-height: 1.3; 
+      margin-bottom: 8px;
+    }
+    
     .intro { max-width: 330px; margin: 10px auto 16px; color: #deded5; font-size: .78rem; line-height: 1.7; }
     
     .section-label { display: flex; align-items: center; gap: 10px; margin: 14px 0 12px; color: var(--gold-light); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; width: 100%; }
@@ -212,9 +225,9 @@
   <main class="invitation" id="invitation">
     <div class="grain" aria-hidden="true"></div>
     
-    <!-- HALAMAN PERTAMA (COVER - 9:16 & Tanpa Scroll) -->
+    <!-- HALAMAN PERTAMA (COVER) -->
     <section class="cover" id="cover" aria-label="Sampul undangan">
-      <div></div> <!-- Spacer atas -->
+      <div></div>
       <div class="cover-main">
         <h1 class="names">Rouf <span class="and">dan</span> Eka</h1>
         <p class="date">22 · 11 · 2026</p>
@@ -222,10 +235,10 @@
           <span aria-hidden="true">✧</span> BUKA UNDANGAN <span aria-hidden="true">↗</span>
         </button>
       </div>
-      <div></div> <!-- Spacer bawah -->
+      <div></div>
     </section>
 
-    <!-- HALAMAN KEDUA (DETAIL - Background Gelap & Blur) -->
+    <!-- HALAMAN KEDUA (DETAIL) -->
     <section class="details" id="details" aria-label="Detail mempelai" aria-hidden="true">
       <header class="details-header">
         <p class="mini-label">Undangan Pernikahan</p>
@@ -233,8 +246,9 @@
         <p class="header-date">MINGGU, 22 NOVEMBER 2026</p>
       </header>
       <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
-      <p class="arabic-greeting" lang="ar">السلام عليكم ورحمة الله وبركاته</p>
-      <h2 class="greeting">Assalamu’alaikum<br>Warahmatullahi Wabarakatuh</h2>
+      
+      <!-- Teks Arab dihapus, teks salam diganti Assalamualaikum Wr Wb dengan font jawapalsu.ttf -->
+      <h2 class="greeting">Assalamualaikum Wr Wb</h2>
       <p class="intro">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri acara pernikahan putra dan putri kami.</p>
 
       <div class="section-label">Kedua Mempelai</div>
@@ -265,14 +279,14 @@
     const backButton = document.getElementById("backToCover");
 
     openButton.addEventListener("click", () => {
-      invitation.classList.add("opened"); // Memicu efek blur & gelap pada background
+      invitation.classList.add("opened");
       cover.classList.add("hidden");
       details.classList.add("visible");
       details.setAttribute("aria-hidden", "false");
     });
 
     backButton.addEventListener("click", () => {
-      invitation.classList.remove("opened"); // Mengembalikan background semula
+      invitation.classList.remove("opened");
       details.classList.remove("visible");
       details.setAttribute("aria-hidden", "true");
       cover.classList.remove("hidden");
