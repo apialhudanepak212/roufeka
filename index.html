@@ -91,6 +91,33 @@
       height: 100%;
     }
 
+    /* Tombol Kontrol Musik Melayang */
+    .music-toggle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(70, 38, 16, 0.8);
+      border: 1px solid #FFD796;
+      color: #FFD796;
+      font-size: 0.85rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 99;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .music-toggle:hover {
+      transform: scale(1.1);
+    }
+    .music-toggle.visible {
+      display: flex;
+    }
+
     /* Cover / Halaman Utama (Main Page) */
     .cover {
       display: flex; 
@@ -515,6 +542,86 @@
       margin-top: 2px;
     }
 
+    /* --- STYLING UNTUK SLIDE 5 (FOTO & COUNTDOWN) --- */
+    .photo-slide-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 5px;
+    }
+
+    .mempelai-photo {
+      flex: 1;
+      width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+    }
+
+    .countdown-box {
+      width: 100%;
+      background: rgba(30, 18, 8, 0.75);
+      border: 1px solid #FFD796;
+      border-radius: 12px;
+      padding: 10px 8px;
+      text-align: center;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    .countdown-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: #FFD796;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .countdown-subtitle {
+      font-size: 0.55rem;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(75, 45, 20, 0.6);
+      border: 1px solid rgba(198, 166, 106, 0.4);
+      border-radius: 6px;
+      padding: 4px 8px;
+      min-width: 55px;
+    }
+
+    .countdown-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #FFD796;
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-size: 0.45rem;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
     /* Indikator Titik (Dots) Navigasi Swipe */
     .swipe-dots {
       display: flex;
@@ -542,6 +649,14 @@
   <main class="invitation" id="invitation">
     <div class="grain" aria-hidden="true"></div>
     
+    <!-- AUDIO LATAR BELAKANG -->
+    <audio id="bgMusic" loop>
+      <source src="musik.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- TOMBOL KONTROL MUSIK MELAYANG -->
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Kontrol Musik">🎵</button>
+
     <!-- MAIN PAGE / HALAMAN UTAMA (COVER) -->
     <section class="cover" id="cover" aria-label="Sampul undangan">
       <div></div>
@@ -671,14 +786,46 @@
             </div>
           </div>
 
+          <!-- SLIDE 5 (Foto Mempelai & Countdown Timer) -->
+          <div class="swipe-slide">
+            <div class="photo-slide-container animate-in delay-1">
+              <img src="fotomempelai.png" alt="Foto Mempelai" class="mempelai-photo" onerror="this.style.display='none'">
+              
+              <div class="countdown-box">
+                <p class="countdown-title">MENUJU HARI BAHAGIA</p>
+                <p class="countdown-subtitle">Ahad, 22 November 2026 Pukul 06.00 WIB</p>
+                
+                <div class="countdown-grid">
+                  <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Hari</span>
+                  </div>
+                  <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Jam</span>
+                  </div>
+                  <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Menit</span>
+                  </div>
+                  <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Detik</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <button class="nav-arrow next" id="nextBtn" aria-label="Berikutnya">›</button>
       </div>
 
-      <!-- Indikator Titik (Dots) di Bawah (4 Dots) -->
+      <!-- Indikator Titik (Dots) di Bawah (5 Dots) -->
       <div class="swipe-dots" id="swipeDots">
         <span class="dot active"></span>
+        <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
@@ -698,13 +845,39 @@
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
     const dots = document.querySelectorAll(".dot");
+    
+    // Elemen Musik
+    const bgMusic = document.getElementById("bgMusic");
+    const musicToggle = document.getElementById("musicToggle");
+    let isPlaying = false;
 
-    // Buka Undangan dari Cover
+    // Buka Undangan dari Cover & Putar Musik
     openButton.addEventListener("click", () => {
       invitation.classList.add("opened");
       cover.classList.add("hidden");
       details.classList.add("visible");
       details.setAttribute("aria-hidden", "false");
+      musicToggle.classList.add("visible");
+
+      bgMusic.play().then(() => {
+        isPlaying = true;
+        musicToggle.textContent = "🎵";
+      }).catch(error => {
+        console.log("Autoplay dicegah browser:", error);
+      });
+    });
+
+    // Kontrol Tombol Musik (Mute / Unmute)
+    musicToggle.addEventListener("click", () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        isPlaying = false;
+        musicToggle.textContent = "🔇";
+      } else {
+        bgMusic.play();
+        isPlaying = true;
+        musicToggle.textContent = "🎵";
+      }
     });
 
     // Kembali ke Cover
@@ -713,6 +886,7 @@
       details.classList.remove("visible");
       details.setAttribute("aria-hidden", "true");
       cover.classList.remove("hidden");
+      musicToggle.classList.remove("visible");
       swipeContainer.scrollTo({ left: 0, behavior: 'smooth' });
     });
 
@@ -749,6 +923,34 @@
         }
       });
     });
+
+    // Script Countdown Timer (Target: 22 November 2026 06:00:00 WIB)
+    const targetDate = new Date("November 22, 2026 06:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(2, '0');
+        document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+      } else {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
   </script>
 </body>
 </html>
