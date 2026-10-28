@@ -272,7 +272,6 @@
       transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Ketika slide aktif, jalankan animasi */
     .swipe-slide.active-slide .animate-in {
       opacity: 1;
       transform: translateY(0) scale(1);
@@ -336,13 +335,14 @@
       filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
     }
     
+    /* Shadow dihilangkan dari couple-textbox */
     .couple-textbox {
       width: 100%;
       background: rgba(70, 38, 16, 0.85);
       border: 1px solid rgba(198, 166, 106, 0.6);
       border-radius: 12px;
       padding: 12px 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      box-shadow: none; 
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -377,15 +377,15 @@
       background: rgba(198, 166, 106, 0.4);
     }
 
-    /* --- CONTENTBOX GAMBAR DENGAN OPACITY DIKURANGI & GARIS TEPI #f7f3ea --- */
+    /* --- CONTENTBOX GAMBAR --- */
     .slide-content-box {
       width: 100%;
       height: 100%;
       background: url("contentbox.png") center / 100% 100% no-repeat;
-      opacity: 0.88; /* Opacity dikurangi sedikit agar lebih transparan */
+      opacity: 0.88;
       border: 1px solid #f7f3ea;
       border-radius: 12px;
-      padding: 24px 20px;
+      padding: 20px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -393,60 +393,49 @@
       overflow-y: auto;
     }
 
-    /* Styling Teks di dalam contentbox */
-    .slide-title {
-      color: #f7f3ea;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      border-bottom: 1px solid rgba(198, 166, 106, 0.4);
-      width: 80%;
-      padding-bottom: 6px;
-    }
-
     .greeting-text {
       font-family: "JawaPalsu", cursive, serif;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: #f4ead6;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .desc-text {
-      font-size: 0.73rem;
-      line-height: 1.5;
+      font-size: 0.7rem;
+      line-height: 1.45;
       color: #deded5;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .person-card {
       width: 100%;
-      margin: 4px 0;
-      padding: 8px;
+      margin: 2px 0;
+      padding: 6px;
       background: rgba(40, 20, 10, 0.35);
       border-radius: 8px;
       border: 1px solid rgba(198, 166, 106, 0.2);
     }
 
-    .person-role {
-      font-size: 0.55rem;
-      letter-spacing: 0.2em;
-      color: var(--gold-light);
-      text-transform: uppercase;
-    }
-
     .person-name {
       font-family: "Great Vibes", cursive;
-      font-size: 1.7rem;
+      font-size: 1.55rem;
       color: var(--cream);
       margin: 2px 0;
     }
 
     .person-parents {
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       color: #d5d4ca;
       line-height: 1.3;
+    }
+
+    /* Styling untuk simbol & di antara kartu mempelai */
+    .slide-ampersand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      color: var(--gold-light);
+      margin: 1px 0;
+      font-style: italic;
     }
 
     /* Indikator Titik (Dots) Navigasi Swipe */
@@ -505,7 +494,7 @@
         <!-- KONTAINER SLIDE GESER (HORIZONTAL SWIPE) -->
         <div class="swipe-container" id="swipeContainer">
           
-          <!-- SLIDE 1 (Wayang & Nama) -->
+          <!-- SLIDE 1 (Wayang & Nama tanpa Shadow) -->
           <div class="swipe-slide active-slide">
             <div class="top-section animate-in delay-1">
               <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
@@ -522,21 +511,20 @@
             </div>
           </div>
 
-          <!-- SLIDE 2 (Materi: Salam & Profil Mempelai) -->
+          <!-- SLIDE 2 (Profil Mempelai: Tanpa Judul & Role, Ditambah Simbol &) -->
           <div class="swipe-slide">
             <div class="slide-content-box animate-in delay-1">
-              <h3 class="slide-title">Kedua Mempelai</h3>
               <p class="greeting-text">Assalamualaikum Wr Wb</p>
               <p class="desc-text">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri acara pernikahan putra-putri kami:</p>
               
               <div class="person-card">
-                <span class="person-role">Mempelai Pria</span>
                 <h4 class="person-name">Muhammad Roúf</h4>
                 <p class="person-parents">Putra pertama dari<br>Bpk. Kosim & Ibu Ponisih</p>
               </div>
 
+              <div class="slide-ampersand">&</div>
+
               <div class="person-card">
-                <span class="person-role">Mempelai Wanita</span>
                 <h4 class="person-name">Eka Kalista Nur Agustin</h4>
                 <p class="person-parents">Putri pertama dari<br>Bpk. Karsidi & Ibu Mukariyah</p>
               </div>
@@ -546,18 +534,18 @@
           <!-- SLIDE 3 (Materi: Waktu & Tempat) -->
           <div class="swipe-slide">
             <div class="slide-content-box animate-in delay-1">
-              <h3 class="slide-title">Waktu & Tempat</h3>
+              <h3 class="slide-title" style="margin-bottom: 12px; font-size: 1.1rem; border-bottom: 1px solid rgba(198, 166, 106, 0.4); width: 80%; padding-bottom: 6px; color: #f7f3ea; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.2em;">Waktu & Tempat</h3>
               <p class="desc-text">Insya Allah acara pernikahan kami akan diselenggarakan pada:</p>
               
               <div class="person-card">
-                <span class="person-role">Akad Nikah</span>
-                <p class="person-name" style="font-size: 1.3rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">08.00 WIB</p>
+                <span style="font-size: 0.55rem; letter-spacing: 0.2em; color: var(--gold-light); text-transform: uppercase;">Akad Nikah</span>
+                <p class="person-name" style="font-size: 1.25rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">08.00 WIB</p>
                 <p class="person-parents">Minggu, 22 November 2026</p>
               </div>
 
-              <div class="person-card">
-                <span class="person-role">Resepsi</span>
-                <p class="person-name" style="font-size: 1.3rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">11.00 - Selesai</p>
+              <div class="person-card" style="margin-top: 6px;">
+                <span style="font-size: 0.55rem; letter-spacing: 0.2em; color: var(--gold-light); text-transform: uppercase;">Resepsi</span>
+                <p class="person-name" style="font-size: 1.25rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">11.00 - Selesai</p>
                 <p class="person-parents">Bertempat di Kediaman Mempelai</p>
               </div>
             </div>
