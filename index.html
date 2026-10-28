@@ -177,7 +177,7 @@
       transform: scale(1);
     }
 
-    /* Header atas di dalam halaman detail */
+    /* Bar Navigasi Atas */
     .details-top-bar {
       width: 100%;
       display: flex;
@@ -211,10 +211,10 @@
       scroll-behavior: smooth;
       gap: 0;
       align-items: center;
-      scrollbar-width: none; /* Firefox */
+      scrollbar-width: none;
     }
     .swipe-container::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
+      display: none;
     }
 
     /* Masing-masing Slide */
@@ -325,53 +325,52 @@
       background: rgba(198, 166, 106, 0.4);
     }
 
-    /* Styling untuk Slide 2 & Seterusnya (Materi Tambahan) */
+    /* --- PENGGANTIAN CONTENT BOX MENJADI GAMBAR (contentbox.png) --- */
     .slide-content-box {
       width: 100%;
       height: 100%;
-      background: rgba(70, 38, 16, 0.75);
-      border: 1px solid rgba(198, 166, 106, 0.4);
-      border-radius: 12px;
-      padding: 18px 14px;
+      background: url("contentbox.png") center / 100% 100% no-repeat;
+      padding: 24px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      backdrop-filter: blur(4px);
       overflow-y: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
+    /* Styling Teks di dalam contentbox.png */
     .slide-title {
-      color: var(--gold-light);
+      color: #f7f3ea;
       font-family: "Cormorant Garamond", serif;
       font-size: 1.1rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 12px;
-      border-bottom: 1px solid rgba(198, 166, 106, 0.3);
-      width: 100%;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(198, 166, 106, 0.4);
+      width: 80%;
       padding-bottom: 6px;
     }
 
     .greeting-text {
       font-family: "JawaPalsu", cursive, serif;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: #f4ead6;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .desc-text {
-      font-size: 0.75rem;
-      line-height: 1.6;
+      font-size: 0.73rem;
+      line-height: 1.5;
       color: #deded5;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .person-card {
       width: 100%;
-      margin: 6px 0;
-      padding: 10px;
-      background: rgba(40, 20, 10, 0.4);
+      margin: 4px 0;
+      padding: 8px;
+      background: rgba(40, 20, 10, 0.35);
       border-radius: 8px;
       border: 1px solid rgba(198, 166, 106, 0.2);
     }
@@ -385,15 +384,15 @@
 
     .person-name {
       font-family: "Great Vibes", cursive;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       color: var(--cream);
       margin: 2px 0;
     }
 
     .person-parents {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: #d5d4ca;
-      line-height: 1.4;
+      line-height: 1.3;
     }
 
     /* Indikator Titik (Dots) Navigasi Swipe */
@@ -448,7 +447,7 @@
       <!-- KONTAINER SLIDE GESER (HORIZONTAL SWIPE) -->
       <div class="swipe-container" id="swipeContainer">
         
-        <!-- SLIDE 1 (Sesuai Desain Terakhir: Wayang & Nama) -->
+        <!-- SLIDE 1 (Wayang & Nama) -->
         <div class="swipe-slide">
           <div class="top-section">
             <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
@@ -465,7 +464,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 2 (Materi: Salam & Profil Mempelai) -->
+        <!-- SLIDE 2 (Materi: Salam & Profil Mempelai dengan Background contentbox.png) -->
         <div class="swipe-slide">
           <div class="slide-content-box">
             <h3 class="slide-title">Kedua Mempelai</h3>
@@ -486,7 +485,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 3 (Materi: Waktu & Lokasi Acara / Tambahan Lainnya) -->
+        <!-- SLIDE 3 (Materi: Waktu & Tempat dengan Background contentbox.png) -->
         <div class="swipe-slide">
           <div class="slide-content-box">
             <h3 class="slide-title">Waktu & Tempat</h3>
@@ -494,13 +493,13 @@
             
             <div class="person-card">
               <span class="person-role">Akad Nikah</span>
-              <p class="person-name" style="font-size: 1.4rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">08.00 WIB</p>
+              <p class="person-name" style="font-size: 1.3rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">08.00 WIB</p>
               <p class="person-parents">Minggu, 22 November 2026</p>
             </div>
 
             <div class="person-card">
               <span class="person-role">Resepsi</span>
-              <p class="person-name" style="font-size: 1.4rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">11.00 - Selesai</p>
+              <p class="person-name" style="font-size: 1.3rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">11.00 - Selesai</p>
               <p class="person-parents">Bertempat di Kediaman Mempelai</p>
             </div>
           </div>
@@ -541,7 +540,6 @@
       details.classList.remove("visible");
       details.setAttribute("aria-hidden", "true");
       cover.classList.remove("hidden");
-      // Reset posisi swipe ke awal
       swipeContainer.scrollTo({ left: 0, behavior: 'smooth' });
     });
 
