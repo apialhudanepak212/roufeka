@@ -384,7 +384,7 @@
       opacity: 0.88;
       border: 1px solid #FFD796;
       border-radius: 12px;
-      padding: 16px 14px;
+      padding: 18px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -437,7 +437,7 @@
       font-style: italic;
     }
 
-    /* Styling Komposisi Kotak Agenda Acara Sesuai Gambar Referensi */
+    /* Styling Agenda Acara (Slide 3) */
     .event-card {
       width: 100%;
       margin: 4px 0;
@@ -488,7 +488,6 @@
       margin-bottom: 5px;
     }
 
-    /* Tombol Lihat Lokasi ala Referensi */
     .map-btn {
       display: inline-block;
       width: 80%;
@@ -609,7 +608,7 @@
             </div>
           </div>
 
-          <!-- SLIDE 3 (Waktu & Lokasi Acara Sesuai Komposisi Referensi & Link Gmaps) -->
+          <!-- SLIDE 3 (Waktu & Lokasi Acara) -->
           <div class="swipe-slide">
             <div class="slide-content-box animate-in delay-1" style="justify-content: space-around; padding: 12px 14px;">
               <h3 class="slide-title" style="margin-bottom: 2px; font-size: 0.95rem; border-bottom: 1px solid rgba(198, 166, 106, 0.4); width: 85%; padding-bottom: 3px; color: #f7f3ea; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.18em;">Waktu & Lokasi Acara</h3>
@@ -650,14 +649,37 @@
             </div>
           </div>
 
+          <!-- SLIDE 4 (Penutup & Doa Restu) -->
+          <div class="swipe-slide">
+            <div class="slide-content-box animate-in delay-1" style="justify-content: center; padding: 24px 20px;">
+              <p class="desc-text" style="font-size: 0.78rem; line-height: 1.6; margin-bottom: 16px;">
+                Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu kepada kedua mempelai.
+              </p>
+              
+              <p class="greeting-text" style="font-size: 1.25rem; margin-bottom: 14px;">Wassalamualaikum Wr Wb</p>
+              
+              <div style="font-size: 0.7rem; color: var(--gold-light); letter-spacing: 0.1em; margin-bottom: 6px; text-transform: uppercase;">
+                Kami yang berbahagia,
+              </div>
+              
+              <p class="person-parents" style="font-size: 0.72rem; line-height: 1.5; color: var(--cream); margin-bottom: 10px;">
+                Kel. Bapak Kosim & Ibu Ponisih<br>
+                Kel. Bapak Karsidi & Ibu Mukariyah
+              </p>
+
+              <h4 class="person-name" style="font-size: 1.5rem; margin-top: 4px;">Ro'uf & Eka</h4>
+            </div>
+          </div>
+
         </div>
 
         <button class="nav-arrow next" id="nextBtn" aria-label="Berikutnya">›</button>
       </div>
 
-      <!-- Indikator Titik (Dots) di Bawah -->
+      <!-- Indikator Titik (Dots) di Bawah (4 Dots) -->
       <div class="swipe-dots" id="swipeDots">
         <span class="dot active"></span>
+        <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
       </div>
