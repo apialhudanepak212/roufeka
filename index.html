@@ -325,21 +325,23 @@
       background: rgba(198, 166, 106, 0.4);
     }
 
-    /* --- PENGGANTIAN CONTENT BOX MENJADI GAMBAR (contentbox.png) --- */
+    /* --- CONTENTBOX GAMBAR TANPA SHADOW, DENGAN GARIS TEPI #f7f3ea --- */
     .slide-content-box {
       width: 100%;
       height: 100%;
       background: url("contentbox.png") center / 100% 100% no-repeat;
+      border: 1px solid #f7f3ea; /* Garis tepi warna #f7f3ea */
+      border-radius: 12px;
       padding: 24px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       overflow-y: auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      /* box-shadow dihilangkan */
     }
 
-    /* Styling Teks di dalam contentbox.png */
+    /* Styling Teks di dalam contentbox */
     .slide-title {
       color: #f7f3ea;
       font-family: "Cormorant Garamond", serif;
@@ -464,7 +466,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 2 (Materi: Salam & Profil Mempelai dengan Background contentbox.png) -->
+        <!-- SLIDE 2 (Materi: Salam & Profil Mempelai) -->
         <div class="swipe-slide">
           <div class="slide-content-box">
             <h3 class="slide-title">Kedua Mempelai</h3>
@@ -485,7 +487,7 @@
           </div>
         </div>
 
-        <!-- SLIDE 3 (Materi: Waktu & Tempat dengan Background contentbox.png) -->
+        <!-- SLIDE 3 (Materi: Waktu & Tempat) -->
         <div class="swipe-slide">
           <div class="slide-content-box">
             <h3 class="slide-title">Waktu & Tempat</h3>
