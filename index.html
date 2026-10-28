@@ -10,228 +10,165 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
+    /* Definisi Custom Font Aston Script */
     @font-face {
-      font-family: "AstonScript";
-      src: url("astonscript.ttf") format("truetype");
-      font-weight: 400 700;
+      font-family: 'AstonScript';
+      src: url('astonscript.ttf') format('truetype');
+      font-weight: bold;
       font-style: normal;
-      font-display: swap;
     }
 
+    /* Definisi Custom Font Jawa Palsu */
     @font-face {
-      font-family: "JawaPalsu";
-      src: url("jawapalsu.ttf") format("truetype");
-      font-weight: 400;
+      font-family: 'JawaPalsu';
+      src: url('jawapalsu.ttf') format('truetype');
+      font-weight: normal;
       font-style: normal;
-      font-display: swap;
     }
 
     :root {
-      color-scheme: dark;
       --forest: #17251f;
       --forest-soft: #23372e;
       --gold: #c6a66a;
       --gold-light: #e7d6ae;
       --cream: #f7f3ea;
       --ink: #26352d;
-      --brown: #462610;
-      --page-width: 430px;
-      --page-height: 780px;
+      --muted: #d6d2c8;
     }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html {
-      min-height: 100%;
-      background: #101511;
-    }
-
-    body {
-      min-height: 100vh;
-      min-height: 100svh;
-      margin: 0;
-      padding: 24px;
-      display: grid;
-      place-items: center;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100vh;
+      height: 100svh;
+      background: #111;
       color: var(--cream);
-      background:
-        radial-gradient(ellipse at 50% 0%, #34463a 0%, transparent 55%),
-        #101511;
       font-family: "DM Sans", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
+    button { font: inherit; }
 
-    button {
-      font: inherit;
-    }
-
-    button:focus-visible {
-      outline: 2px solid var(--cream);
-      outline-offset: 4px;
-    }
-
+    /* Kontainer utama berukuran rasio 9:16 persis dan pas di layar tanpa scroll */
     .invitation {
       position: relative;
       isolation: isolate;
-      width: min(100%, var(--page-width));
-      height: min( min(780px, 86svh), 900px);
-      min-height: 620px;
+      width: 100%;
+      max-width: 410px;
+      height: 100vh;
+      max-height: 730px;
+      aspect-ratio: 9 / 16;
       overflow: hidden;
-      border: 1px solid rgba(231, 214, 174, 0.24);
-      border-radius: 22px;
       background: var(--forest);
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
     }
 
+    /* Layer Background Utama */
     .invitation::before {
       content: "";
       position: absolute;
-      inset: -10px;
-      z-index: -2;
-      background: var(--forest) url("background.png") center / cover no-repeat;
-      transition: filter 700ms ease, transform 700ms ease;
-    }
-
-    .invitation.opened::before {
-      filter: blur(7px) brightness(0.43);
-      transform: scale(1.04);
-    }
-
-    .invitation::after {
-      content: "";
-      position: absolute;
       inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      background: linear-gradient(180deg, rgba(16, 25, 20, 0.03), rgba(16, 25, 20, 0.13));
+      z-index: -2;
+      background: url("background.png") center / cover no-repeat;
+      transition: filter 0.8s ease, transform 0.8s ease;
+    }
+
+    /* Efek Gelap & Blur pada Background saat Halaman Kedua Dibuka */
+    .invitation.opened::before {
+      filter: blur(8px) brightness(0.4);
+      transform: scale(1.05);
     }
 
     .grain {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.11;
+      position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .14;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
     }
 
-    .cover,
-    .details {
-      position: absolute;
+    .cover, .details { 
+      position: absolute; 
       inset: 0;
-      z-index: 1;
       width: 100%;
       height: 100%;
-      text-align: center;
     }
 
+    /* Cover / Halaman Pertama (9:16, No Scroll) */
     .cover {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
       justify-content: center;
-      padding: clamp(24px, 7%, 42px) 24px;
-      transition: opacity 450ms ease, transform 450ms ease, visibility 450ms;
+      padding: 30px 20px;
+      text-align: center;
+      transition: opacity .5s ease, transform .5s ease, visibility .5s;
     }
-
-    .cover::before,
-    .cover::after {
-      content: "";
-      position: absolute;
-      left: 12%;
-      right: 12%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(198, 166, 106, 0.8), transparent);
-    }
-
-    .cover::before { top: 8%; }
-    .cover::after { bottom: 8%; }
 
     .cover.hidden {
       opacity: 0;
       visibility: hidden;
-      transform: scale(0.97);
+      transform: scale(0.95);
       pointer-events: none;
     }
 
-    .cover-main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .cover-main { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
       width: 100%;
     }
-
+    
     .names {
-      margin: 0;
-      color: #54370e;
-      font-family: "AstonScript", "Great Vibes", cursive;
-      font-size: clamp(3.5rem, 13vw, 5rem);
-      font-weight: 700;
-      line-height: 1.02;
-      text-shadow: 0 1px 0 rgba(255, 245, 220, 0.18);
+      margin: 10px 0;
+      color: #54370E;
+      font-family: "AstonScript", cursive;
+      font-weight: bold;
+      font-size: clamp(3rem, 12vw, 4.8rem);
+      line-height: 1.1;
+      text-shadow: none;
     }
-
-    .names .and {
-      display: block;
-      margin: 8px 0;
-      color: #54370e;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.25rem;
-      font-style: italic;
-      font-weight: 500;
-      letter-spacing: 0.16em;
+    .names .and { 
+      display: block; 
+      margin: 6px 0; 
+      font-family: "Cormorant Garamond", serif; 
+      font-size: 1.35rem; 
+      font-style: italic; 
+      color: #54370E; 
     }
-
-    .date {
-      margin: 28px 0 24px;
-      color: #54370e;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.05rem;
+    
+    .date { 
+      color: #54370E; 
+      font-family: "Cormorant Garamond", serif; 
+      font-size: 1.15rem; 
+      letter-spacing: .2em; 
+      margin: 30px 0 18px 0; 
       font-weight: 600;
-      letter-spacing: 0.22em;
     }
 
     .open-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      min-height: 48px;
-      padding: 0 26px;
-      border: 1px solid rgba(198, 166, 106, 0.9);
-      border-radius: 999px;
-      color: var(--forest);
-      background: linear-gradient(135deg, #f0e2c0, var(--gold));
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-      transition: transform 180ms ease, box-shadow 180ms ease;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 44px; padding: 0 26px;
+      border: 1px solid var(--gold); border-radius: 999px;
+      color: var(--forest); background: linear-gradient(135deg, #e7d6ae, #c6a66a);
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
-
-    .open-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-    }
-
+    .open-button:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+    .open-button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+    
+    /* --- HALAMAN KEDUA (DETAIL) --- */
     .details {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      padding: clamp(22px, 5.5%, 34px) 24px;
-      overflow-y: auto;
-      overscroll-behavior: contain;
+      padding: 24px 20px;
+      text-align: center;
       opacity: 0;
       visibility: hidden;
-      transform: scale(1.025);
-      transition: opacity 550ms ease, transform 550ms ease, visibility 550ms;
-      background: rgba(40, 29, 20, 0.22);
+      transform: scale(1.05);
+      transition: opacity .6s ease, transform .6s ease, visibility .6s;
+      overflow: hidden;
+      background: rgba(75, 45, 20, 0.45);
     }
 
     .details.visible {
@@ -242,172 +179,110 @@
 
     .top-section {
       display: flex;
-      flex: 0 0 auto;
       flex-direction: column;
       align-items: center;
       width: 100%;
     }
 
-    .gunungan-img {
-      display: block;
-      width: 42px;
-      max-height: 56px;
-      margin-bottom: 12px;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
+    .gunungan-img { 
+      display: block; 
+      width: 38px; 
+      max-height: 50px; 
+      object-fit: contain; 
+      margin-bottom: 6px; 
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); 
     }
 
     .wedding-invitation-title {
+      color: #e7d6ae;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
       position: relative;
       width: 100%;
-      margin: 0;
-      padding-bottom: 12px;
-      color: var(--gold-light);
-      font-family: "Cormorant Garamond", serif;
-      font-size: 0.86rem;
-      font-weight: 600;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
+      padding-bottom: 10px;
     }
 
     .wedding-invitation-title::after {
       content: "";
       position: absolute;
       bottom: 0;
-      left: 18%;
-      right: 18%;
+      left: 20%;
+      right: 20%;
       height: 1px;
-      background: rgba(198, 166, 106, 0.55);
+      background: rgba(198, 166, 106, 0.5);
     }
 
     .wayang-container {
+      flex: 1;
       display: flex;
-      flex: 1 1 auto;
       align-items: center;
       justify-content: center;
       width: 100%;
-      min-height: 100px;
-      margin: 0;
+      margin: 10px 0;
     }
 
     .wayang-img {
-      display: block;
-      max-width: 90%;
-      max-height: min(42vh, 360px);
+      max-width: 98%; /* Diperbesar dari sebelumnya */
+      max-height: 390px; /* Diperbesar dari sebelumnya */
       object-fit: contain;
-      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.45));
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
     }
-
+    
+    /* Textbox Coklat Mempelai di Bawah */
     .couple-textbox {
+      width: 100%;
+      background: rgba(70, 38, 16, 0.85);
+      border: 1px solid rgba(198, 166, 106, 0.6);
+      border-radius: 12px;
+      padding: 14px 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
       display: flex;
-      flex: 0 0 auto;
       flex-direction: column;
       align-items: center;
-      width: 100%;
-      padding: 18px 14px;
-      border: 1px solid rgba(198, 166, 106, 0.62);
-      border-radius: 14px;
-      background: rgba(54, 34, 19, 0.86);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(4px);
+      margin-bottom: 10px;
     }
 
     .couple-names-aston {
-      margin: 0;
-      color: var(--cream);
-      font-family: "AstonScript", "Great Vibes", cursive;
-      font-size: clamp(2rem, 8vw, 2.6rem);
-      font-weight: 700;
-      line-height: 1.12;
+      color: #f7f3ea;
+      font-family: "AstonScript", cursive;
+      font-size: clamp(1.8rem, 7vw, 2.4rem);
+      line-height: 1.1;
+      font-weight: bold;
     }
 
     .couple-date-sub {
-      position: relative;
-      margin: 10px 0 0;
-      padding-top: 9px;
-      color: var(--gold-light);
+      color: #e7d6ae;
       font-family: "Cormorant Garamond", serif;
       font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.25em;
+      margin-top: 6px;
+      position: relative;
+      padding-top: 5px;
     }
 
     .couple-date-sub::before {
       content: "";
       position: absolute;
       top: 0;
-      left: 25%;
-      right: 25%;
+      left: 30%;
+      right: 30%;
       height: 1px;
-      background: rgba(198, 166, 106, 0.48);
+      background: rgba(198, 166, 106, 0.4);
     }
 
-    .back-button {
-      flex: 0 0 auto;
-      padding: 8px 12px;
-      border: 0;
-      border-radius: 999px;
-      color: rgba(231, 214, 174, 0.82);
-      background: transparent;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: color 180ms ease, background 180ms ease;
+    .back-button { 
+      background: none; 
+      border: none; 
+      color: rgba(231, 214, 174, 0.7); 
+      font-size: 0.65rem; 
+      cursor: pointer; 
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
     }
-
-    .back-button:hover {
-      color: var(--cream);
-      background: rgba(255, 255, 255, 0.07);
-    }
-
-    @media (max-width: 520px) {
-      body {
-        padding: 0;
-        background: var(--forest);
-      }
-
-      .invitation {
-        width: 100%;
-        height: 100vh;
-        height: 100svh;
-        min-height: 0;
-        max-height: none;
-        border: 0;
-        border-radius: 0;
-        box-shadow: none;
-      }
-
-      .cover {
-        padding: 30px 22px;
-      }
-
-      .details {
-        padding: max(22px, env(safe-area-inset-top)) 22px max(18px, env(safe-area-inset-bottom));
-      }
-
-      .wayang-img {
-        max-height: 42svh;
-      }
-    }
-
-    @media (max-height: 680px) and (min-width: 521px) {
-      body { padding: 12px; }
-      .invitation { height: 94svh; min-height: 0; }
-      .details { gap: 10px; padding-top: 18px; padding-bottom: 18px; }
-      .gunungan-img { width: 32px; max-height: 42px; margin-bottom: 8px; }
-      .wayang-img { max-height: 34vh; }
-      .couple-textbox { padding: 12px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-      }
-    }
+    .back-button:hover { color: #f7f3ea; }
   </style>
 </head>
 <body>
@@ -420,7 +295,7 @@
       <div class="cover-main">
         <h1 class="names">Rouf <span class="and">dan</span> Eka</h1>
         <p class="date">22 · 11 · 2026</p>
-        <button class="open-button" id="openInvitation" type="button" aria-controls="details">
+        <button class="open-button" id="openInvitation" type="button">
           <span aria-hidden="true">✧</span> BUKA UNDANGAN <span aria-hidden="true">↗</span>
         </button>
       </div>
@@ -443,7 +318,7 @@
         <p class="couple-date-sub">22.11.2026</p>
       </div>
 
-      <button class="back-button" id="backToCover" type="button" aria-controls="cover">← Kembali ke sampul</button>
+      <button class="back-button" id="backToCover" type="button">← Kembali ke sampul</button>
     </section>
   </main>
   
@@ -459,14 +334,12 @@
       cover.classList.add("hidden");
       details.classList.add("visible");
       details.setAttribute("aria-hidden", "false");
-      openButton.setAttribute("aria-expanded", "true");
     });
 
     backButton.addEventListener("click", () => {
       invitation.classList.remove("opened");
       details.classList.remove("visible");
       details.setAttribute("aria-hidden", "true");
-      openButton.setAttribute("aria-expanded", "false");
       cover.classList.remove("hidden");
     });
   </script>
