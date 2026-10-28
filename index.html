@@ -437,30 +437,83 @@
       font-style: italic;
     }
 
-    /* Styling khusus untuk kartu agenda acara di Slide 3 */
+    /* Styling Komposisi Kotak Agenda Acara Sesuai Gambar Referensi */
     .event-card {
       width: 100%;
-      margin: 3px 0;
-      padding: 5px 8px;
+      margin: 4px 0;
+      padding: 6px 8px;
       background: rgba(40, 20, 10, 0.35);
       border-radius: 8px;
       border: 1px solid rgba(198, 166, 106, 0.2);
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .event-title {
-      font-size: 0.58rem;
-      letter-spacing: 0.18em;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
       color: #FFD796;
       text-transform: uppercase;
       font-weight: 700;
-      margin-bottom: 1px;
+      margin-bottom: 3px;
+      position: relative;
+      width: 100%;
+      padding-bottom: 3px;
+    }
+    .event-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      right: 25%;
+      height: 1px;
+      background: rgba(198, 166, 106, 0.4);
     }
 
-    .event-detail {
-      font-size: 0.62rem;
+    .event-date-large {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.95rem;
+      font-weight: 700;
       color: var(--cream);
+      letter-spacing: 0.1em;
+      margin: 2px 0;
+    }
+
+    .event-time-sub {
+      font-size: 0.6rem;
+      color: #e7d6ae;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+    }
+
+    /* Tombol Lihat Lokasi ala Referensi */
+    .map-btn {
+      display: inline-block;
+      width: 80%;
+      max-width: 160px;
+      padding: 4px 10px;
+      background: linear-gradient(135deg, #f7dfa5, #d9b36c);
+      color: #2b1708;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      border-radius: 999px;
+      margin: 4px 0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease;
+    }
+    .map-btn:hover {
+      transform: scale(1.03);
+    }
+
+    .event-address {
+      font-size: 0.55rem;
+      color: #deded5;
       line-height: 1.3;
+      margin-top: 2px;
     }
 
     /* Indikator Titik (Dots) Navigasi Swipe */
@@ -556,45 +609,42 @@
             </div>
           </div>
 
-          <!-- SLIDE 3 (Waktu & Lokasi Acara Lengkap) -->
+          <!-- SLIDE 3 (Waktu & Lokasi Acara Sesuai Komposisi Referensi & Link Gmaps) -->
           <div class="swipe-slide">
-            <div class="slide-content-box animate-in delay-1">
-              <h3 class="slide-title" style="margin-bottom: 6px; font-size: 1rem; border-bottom: 1px solid rgba(198, 166, 106, 0.4); width: 85%; padding-bottom: 4px; color: #f7f3ea; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.18em;">Waktu & Lokasi Acara</h3>
+            <div class="slide-content-box animate-in delay-1" style="justify-content: space-around; padding: 12px 14px;">
+              <h3 class="slide-title" style="margin-bottom: 2px; font-size: 0.95rem; border-bottom: 1px solid rgba(198, 166, 106, 0.4); width: 85%; padding-bottom: 3px; color: #f7f3ea; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.18em;">Waktu & Lokasi Acara</h3>
               
               <!-- Akad Nikah -->
               <div class="event-card">
                 <p class="event-title">AKAD NIKAH</p>
-                <p class="event-detail">
-                  Minggu, 22 November 2026<br>
-                  Pukul : 06:00 WIB<br>
-                  Alamat : Kujon RT 3/RW 2, Ngargogondo, Borobudur, Magelang
-                </p>
+                <p class="event-date-large">22 NOVEMBER 2026</p>
+                <p class="event-time-sub">Ahad, 06:00 WIB - Selesai</p>
+                <a href="https://maps.app.goo.gl/..." target="_blank" class="map-btn">LIHAT LOKASI</a>
+                <p class="event-address">Kujon RT 3/RW 2, Ngargogondo, Borobudur, Magelang</p>
               </div>
 
               <!-- Resepsi -->
               <div class="event-card">
                 <p class="event-title">RESEPSI</p>
-                <p class="event-detail">
-                  Minggu, 22 November 2026<br>
-                  Pukul : 07:30 WIB - selesai<br>
-                  Alamat : Kujon RT 3/RW 2, Ngargogondo, Borobudur, Magelang
-                </p>
+                <p class="event-date-large">22 NOVEMBER 2026</p>
+                <p class="event-time-sub">Ahad, 07:30 WIB - Selesai</p>
+                <a href="https://maps.app.goo.gl/..." target="_blank" class="map-btn">LIHAT LOKASI</a>
+                <p class="event-address">Kujon RT 3/RW 2, Ngargogondo, Borobudur, Magelang</p>
               </div>
 
               <!-- Ngunduh Mantu -->
               <div class="event-card">
                 <p class="event-title">NGUNDUH MANTU</p>
-                <p class="event-detail">
-                  Minggu, 22 November 2026<br>
-                  Pukul : 14:00 WIB - selesai<br>
-                  Alamat : Ngaglik RT 3/RW 3, Bulus, Gebang, Purworejo
-                </p>
+                <p class="event-date-large">22 NOVEMBER 2026</p>
+                <p class="event-time-sub">Ahad, 14:00 WIB - Selesai</p>
+                <a href="https://maps.app.goo.gl/..." target="_blank" class="map-btn">LIHAT LOKASI</a>
+                <p class="event-address">Ngaglik RT 3/RW 3, Bulus, Gebang, Purworejo</p>
               </div>
 
               <!-- Mauhidhoh Hasanah -->
               <div class="event-card" style="padding: 4px 6px;">
-                <p class="event-title" style="font-size: 0.52rem;">Mauhidhoh Hasanah</p>
-                <p class="event-detail" style="font-size: 0.58rem;">Oleh Bapak KH. Ngaziz Nurkholis</p>
+                <p class="event-title" style="font-size: 0.55rem; margin-bottom: 1px;">MAUHIDHOH HASANAH</p>
+                <p class="event-detail" style="font-size: 0.6rem; color: #FFD796;">Oleh Bapak KH. Ngaziz Nurkholis</p>
               </div>
 
             </div>
