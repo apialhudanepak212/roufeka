@@ -91,15 +91,15 @@
       height: 100%;
     }
 
-    /* Tombol Kontrol Musik Melayang */
+    /* Tombol Kontrol Musik Melayang di Pojok Kanan Bawah */
     .music-toggle {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      bottom: 12px;
+      right: 12px;
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: rgba(70, 38, 16, 0.8);
+      background: rgba(70, 38, 16, 0.85);
       border: 1px solid #FFD796;
       color: #FFD796;
       font-size: 0.85rem;
@@ -108,7 +108,7 @@
       justify-content: center;
       cursor: pointer;
       z-index: 99;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
       transition: transform 0.2s;
     }
     .music-toggle:hover {
@@ -542,7 +542,7 @@
       margin-top: 2px;
     }
 
-    /* --- STYLING UNTUK SLIDE 5 (FOTO & COUNTDOWN) --- */
+    /* --- STYLING UNTUK SLIDE 5 (FOTO & COUNTDOWN TANPA SHADOW) --- */
     .photo-slide-container {
       width: 100%;
       height: 100%;
@@ -570,7 +570,7 @@
       padding: 10px 8px;
       text-align: center;
       backdrop-filter: blur(4px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      box-shadow: none; /* Shadow dihilangkan sesuai permintaan */
     }
 
     .countdown-title {
@@ -654,7 +654,7 @@
       <source src="musik.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- TOMBOL KONTROL MUSIK MELAYANG -->
+    <!-- TOMBOL KONTROL MUSIK DI POJOK KANAN BAWAH -->
     <button class="music-toggle" id="musicToggle" type="button" aria-label="Kontrol Musik">🎵</button>
 
     <!-- MAIN PAGE / HALAMAN UTAMA (COVER) -->
@@ -786,7 +786,7 @@
             </div>
           </div>
 
-          <!-- SLIDE 5 (Foto Mempelai & Countdown Timer) -->
+          <!-- SLIDE 5 (Foto Mempelai & Countdown Tanpa Shadow) -->
           <div class="swipe-slide">
             <div class="photo-slide-container animate-in delay-1">
               <img src="fotomempelai.png" alt="Foto Mempelai" class="mempelai-photo" onerror="this.style.display='none'">
@@ -822,7 +822,7 @@
         <button class="nav-arrow next" id="nextBtn" aria-label="Berikutnya">›</button>
       </div>
 
-      <!-- Indikator Titik (Dots) di Bawah (5 Dots) -->
+      <!-- Indikator Titik (Dots) di Bawah -->
       <div class="swipe-dots" id="swipeDots">
         <span class="dot active"></span>
         <span class="dot"></span>
