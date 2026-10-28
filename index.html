@@ -201,11 +201,46 @@
     }
     .back-button:hover { color: #f7f3ea; }
 
+    /* Wrapper untuk slider dan tombol panah samping */
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      height: 84%;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Tombol Navigasi Panah Kiri/Kanan */
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(198, 166, 106, 0.5);
+      color: var(--gold-light);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-arrow:hover {
+      background: rgba(70, 38, 16, 0.8);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .nav-arrow.prev { left: -4px; }
+    .nav-arrow.next { right: -4px; }
+
     /* Area Swipe Container (Horizontal Slider) */
     .swipe-container {
       display: flex;
       width: 100%;
-      height: 84%;
+      height: 100%;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
@@ -227,7 +262,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: 5px 4px;
+      padding: 5px 12px;
     }
 
     /* Styling Elemen Slide 1 (Wayang) */
@@ -330,7 +365,7 @@
       width: 100%;
       height: 100%;
       background: url("contentbox.png") center / 100% 100% no-repeat;
-      border: 1px solid #f7f3ea; /* Garis tepi warna #f7f3ea */
+      border: 1px solid #f7f3ea;
       border-radius: 12px;
       padding: 24px 20px;
       display: flex;
@@ -338,7 +373,6 @@
       align-items: center;
       text-align: center;
       overflow-y: auto;
-      /* box-shadow dihilangkan */
     }
 
     /* Styling Teks di dalam contentbox */
@@ -446,67 +480,74 @@
         <button class="back-button" id="backToCover" type="button">Kembali ke Sampul</button>
       </div>
 
-      <!-- KONTAINER SLIDE GESER (HORIZONTAL SWIPE) -->
-      <div class="swipe-container" id="swipeContainer">
+      <!-- WRAPPER SLIDER DENGAN TOMBOL PANAH -->
+      <div class="slider-wrapper">
+        <button class="nav-arrow prev" id="prevBtn" aria-label="Sebelumnya">‹</button>
         
-        <!-- SLIDE 1 (Wayang & Nama) -->
-        <div class="swipe-slide">
-          <div class="top-section">
-            <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
-            <h2 class="wedding-invitation-title">WEDDING INVITATION</h2>
-          </div>
+        <!-- KONTAINER SLIDE GESER (HORIZONTAL SWIPE) -->
+        <div class="swipe-container" id="swipeContainer">
           
-          <div class="wayang-container">
-            <img src="wayang.png" alt="Ilustrasi Wayang" class="wayang-img" onerror="this.style.display='none'">
-          </div>
-
-          <div class="couple-textbox">
-            <h3 class="couple-names-aston">Rouf & Eka</h3>
-            <p class="couple-date-sub">22.11.2026</p>
-          </div>
-        </div>
-
-        <!-- SLIDE 2 (Materi: Salam & Profil Mempelai) -->
-        <div class="swipe-slide">
-          <div class="slide-content-box">
-            <h3 class="slide-title">Kedua Mempelai</h3>
-            <p class="greeting-text">Assalamualaikum Wr Wb</p>
-            <p class="desc-text">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri acara pernikahan putra-putri kami:</p>
+          <!-- SLIDE 1 (Wayang & Nama) -->
+          <div class="swipe-slide">
+            <div class="top-section">
+              <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
+              <h2 class="wedding-invitation-title">WEDDING INVITATION</h2>
+            </div>
             
-            <div class="person-card">
-              <span class="person-role">Mempelai Pria</span>
-              <h4 class="person-name">Muhammad Roúf</h4>
-              <p class="person-parents">Putra pertama dari<br>Bpk. Kosim & Ibu Ponisih</p>
+            <div class="wayang-container">
+              <img src="wayang.png" alt="Ilustrasi Wayang" class="wayang-img" onerror="this.style.display='none'">
             </div>
 
-            <div class="person-card">
-              <span class="person-role">Mempelai Wanita</span>
-              <h4 class="person-name">Eka Kalista Nur Agustin</h4>
-              <p class="person-parents">Putri pertama dari<br>Bpk. Karsidi & Ibu Mukariyah</p>
+            <div class="couple-textbox">
+              <h3 class="couple-names-aston">Rouf & Eka</h3>
+              <p class="couple-date-sub">22.11.2026</p>
             </div>
           </div>
-        </div>
 
-        <!-- SLIDE 3 (Materi: Waktu & Tempat) -->
-        <div class="swipe-slide">
-          <div class="slide-content-box">
-            <h3 class="slide-title">Waktu & Tempat</h3>
-            <p class="desc-text">Insya Allah acara pernikahan kami akan diselenggarakan pada:</p>
-            
-            <div class="person-card">
-              <span class="person-role">Akad Nikah</span>
-              <p class="person-name" style="font-size: 1.3rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">08.00 WIB</p>
-              <p class="person-parents">Minggu, 22 November 2026</p>
-            </div>
+          <!-- SLIDE 2 (Materi: Salam & Profil Mempelai) -->
+          <div class="swipe-slide">
+            <div class="slide-content-box">
+              <h3 class="slide-title">Kedua Mempelai</h3>
+              <p class="greeting-text">Assalamualaikum Wr Wb</p>
+              <p class="desc-text">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri acara pernikahan putra-putri kami:</p>
+              
+              <div class="person-card">
+                <span class="person-role">Mempelai Pria</span>
+                <h4 class="person-name">Muhammad Roúf</h4>
+                <p class="person-parents">Putra pertama dari<br>Bpk. Kosim & Ibu Ponisih</p>
+              </div>
 
-            <div class="person-card">
-              <span class="person-role">Resepsi</span>
-              <p class="person-name" style="font-size: 1.3rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">11.00 - Selesai</p>
-              <p class="person-parents">Bertempat di Kediaman Mempelai</p>
+              <div class="person-card">
+                <span class="person-role">Mempelai Wanita</span>
+                <h4 class="person-name">Eka Kalista Nur Agustin</h4>
+                <p class="person-parents">Putri pertama dari<br>Bpk. Karsidi & Ibu Mukariyah</p>
+              </div>
             </div>
           </div>
+
+          <!-- SLIDE 3 (Materi: Waktu & Tempat) -->
+          <div class="swipe-slide">
+            <div class="slide-content-box">
+              <h3 class="slide-title">Waktu & Tempat</h3>
+              <p class="desc-text">Insya Allah acara pernikahan kami akan diselenggarakan pada:</p>
+              
+              <div class="person-card">
+                <span class="person-role">Akad Nikah</span>
+                <p class="person-name" style="font-size: 1.3rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">08.00 WIB</p>
+                <p class="person-parents">Minggu, 22 November 2026</p>
+              </div>
+
+              <div class="person-card">
+                <span class="person-role">Resepsi</span>
+                <p class="person-name" style="font-size: 1.3rem; font-family: 'DM Sans', sans-serif; font-weight: 700;">11.00 - Selesai</p>
+                <p class="person-parents">Bertempat di Kediaman Mempelai</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
+        <button class="nav-arrow next" id="nextBtn" aria-label="Berikutnya">›</button>
       </div>
 
       <!-- Indikator Titik (Dots) di Bawah -->
@@ -526,6 +567,8 @@
     const openButton = document.getElementById("openInvitation");
     const backButton = document.getElementById("backToCover");
     const swipeContainer = document.getElementById("swipeContainer");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
     const dots = document.querySelectorAll(".dot");
 
     // Buka Undangan dari Cover
@@ -545,7 +588,16 @@
       swipeContainer.scrollTo({ left: 0, behavior: 'smooth' });
     });
 
-    // Update indikator titik (dots) saat digeser (swipe)
+    // Fungsi Tombol Panah Kiri & Kanan
+    nextBtn.addEventListener("click", () => {
+      swipeContainer.scrollBy({ left: swipeContainer.clientWidth, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener("click", () => {
+      swipeContainer.scrollBy({ left: -swipeContainer.clientWidth, behavior: 'smooth' });
+    });
+
+    // Update indikator titik (dots) saat digeser (swipe atau klik panah)
     swipeContainer.addEventListener("scroll", () => {
       const scrollPos = swipeContainer.scrollLeft;
       const slideWidth = swipeContainer.clientWidth;
