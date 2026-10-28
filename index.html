@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17251f">
+  <meta name="description" content="Undangan pernikahan Muhammad Roúf dan Eka Kalista Nur Agustin, 22 November 2026.">
+  <title>Rouf & Eka — Undangan Pernikahan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    /* Definisi Custom Font Aston Script */
+    @font-face {
+      font-family: 'AstonScript';
+      src: url('astonscript.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    :root {
+      --forest: #17251f;
+      --forest-soft: #23372e;
+      --gold: #c6a66a;
+      --gold-light: #e7d6ae;
+      --cream: #f7f3ea;
+      --ink: #26352d;
+      --muted: #d6d2c8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      background: #e9e5dc;
+      color: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 28px 16px;
+    }
+    button { font: inherit; }
+    .invitation {
+      position: relative;
+      isolation: isolate;
+      width: min(100%, 480px);
+      min-height: min(900px, calc(100vh - 56px));
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--forest);
+      box-shadow: 0 28px 80px #17251f30;
+    }
+    /* Background sampul cerah tanpa lapisan gelap */
+    .invitation::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: url("background.png") center / cover no-repeat;
+      transform: scale(1.015);
+    }
+    .grain {
+      position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .14;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+    }
+    .cover, .details { position: relative; min-height: inherit; }
+    .cover {
+      min-height: min(900px, calc(100vh - 56px));
+      display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+      padding: clamp(28px, 6vh, 58px) 26px 34px;
+      text-align: center;
+      transition: opacity .55s ease, transform .65s ease, visibility .55s;
+    }
+    .eyebrow {
+      color: var(--gold-light); font-size: .66rem; font-weight: 600;
+      letter-spacing: .28em; text-transform: uppercase;
+    }
+    .ornament { display: flex; align-items: center; gap: 12px; color: var(--gold); margin: 20px 0; }
+    .ornament::before, .ornament::after { content: ""; width: 48px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .ornament::after { transform: scaleX(-1); }
+    .ornament span { font-size: 1.05rem; }
+    .cover-main { margin: auto 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    
+    /* Ukuran font mempelai diperkecil, menggunakan AstonScript, warna #54370E, tanpa bayangan */
+    .names {
+      margin: 10px 0;
+      color: #54370E;
+      font-family: "AstonScript", cursive;
+      font-weight: bold;
+      font-size: clamp(2.4rem, 9vw, 3.6rem);
+      line-height: 1.1;
+      text-shadow: none;
+    }
+    .names .and { display: block; margin: 4px 0; font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-style: italic; color: #54370E; }
+    
+    /* Tanggal dipindah ke agak bawah, tepat di atas tombol buka undangan */
+    .date { 
+      color: #54370E; 
+      font-family: "Cormorant Garamond", serif; 
+      font-size: 1.1rem; 
+      letter-spacing: .2em; 
+      margin: 35px 0 16px 0; 
+      font-weight: 600;
+    }
+
+    .open-button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 48px; padding: 0 24px;
+      border: 1px solid var(--gold); border-radius: 999px;
+      color: var(--forest); background: linear-gradient(135deg, #e7d6ae, #c6a66a);
+      font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+      cursor: pointer; box-shadow: 0 8px 28px #0003;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .open-button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px #0004; }
+    .open-button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+    
+    /* --- HALAMAN KEDUA (TIDAK ADA PERUBAHAN) --- */
+    .details {
+      display: none;
+      padding: 26px 22px 38px;
+      text-align: center;
+      animation: reveal .7s ease both;
+    }
+    .details.visible { display: block; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .details-header {
+      padding: 20px 14px 22px; border: 1px solid #c6a66a88;
+      border-radius: 18px; background: #ffffff08; backdrop-filter: blur(8px);
+    }
+    .mini-label { color: var(--gold-light); font-size: .62rem; letter-spacing: .23em; text-transform: uppercase; }
+    .header-names { margin: 8px 0 4px; color: var(--cream); font: 400 2.7rem/1.1 "Great Vibes", cursive; }
+    .header-date { color: var(--gold-light); font: 500 .9rem "Cormorant Garamond", serif; letter-spacing: .18em; }
+    .gunungan-img { display: block; width: 58px; max-height: 76px; object-fit: contain; margin: 25px auto 18px; filter: drop-shadow(0 3px 8px #0004); }
+    .arabic-greeting { color: var(--gold-light); font: 400 1.55rem "Cormorant Garamond", serif; margin-bottom: 7px; }
+    .greeting { color: #f4ead6; font: 400 1.65rem "Cormorant Garamond", serif; line-height: 1.2; }
+    .intro { max-width: 350px; margin: 15px auto 27px; color: #deded5; font-size: .82rem; line-height: 1.9; }
+    .section-label { display: flex; align-items: center; gap: 12px; margin: 26px 0 22px; color: var(--gold-light); font-size: .63rem; letter-spacing: .2em; text-transform: uppercase; }
+    .section-label::before, .section-label::after { content: ""; flex: 1; height: 1px; background: #c6a66a66; }
+    .couple-card {
+      padding: 23px 15px 20px; margin: 12px 0;
+      border: 1px solid #c6a66a55; border-radius: 18px;
+      background: linear-gradient(145deg, #ffffff0c, #ffffff03);
+    }
+    .role { color: var(--gold-light); font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; }
+    .couple-name { margin: 10px 0 8px; color: var(--cream); font: 400 clamp(2.3rem, 10vw, 3.1rem)/1.08 "Great Vibes", cursive; }
+    .parents { color: #d5d4ca; font-size: .78rem; line-height: 1.9; }
+    .ampersand { color: var(--gold); font: 400 2.5rem "Cormorant Garamond", serif; margin: 2px 0; }
+    .closing { margin-top: 28px; padding-top: 22px; border-top: 1px solid #c6a66a55; color: #e0ded4; font-size: .8rem; line-height: 1.9; }
+    .closing strong { display: block; margin-top: 12px; color: var(--gold-light); font: 400 2rem "Great Vibes", cursive; }
+    .back-button { margin-top: 22px; padding: 9px 15px; border: 1px solid #c6a66a66; border-radius: 999px; background: transparent; color: #e9dfca; font-size: .72rem; cursor: pointer; }
+    @media (max-width: 520px) {
+      body { padding: 0; background: var(--forest); }
+      .invitation { width: 100%; min-height: 100svh; border-radius: 0; box-shadow: none; }
+      .cover { min-height: 100svh; padding-top: max(28px, env(safe-area-inset-top)); padding-bottom: max(28px, env(safe-area-inset-bottom)); }
+      .details { padding-bottom: max(34px, env(safe-area-inset-bottom)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="invitation" id="invitation">
+    <div class="grain" aria-hidden="true"></div>
+    
+    <!-- HALAMAN PERTAMA (COVER) -->
+    <section class="cover" id="cover" aria-label="Sampul undangan">
+      <div>
+        <p class="eyebrow">The Wedding Celebration</p>
+        <div class="ornament" aria-hidden="true"><span>✦</span></div>
+      </div>
+      <div class="cover-main">
+        <h1 class="names">Rouf <span class="and">dan</span> Eka</h1>
+        <p class="date">22 · 11 · 2026</p>
+        <button class="open-button" id="openInvitation" type="button">
+          <span aria-hidden="true">✧</span> BUKA UNDANGAN <span aria-hidden="true">↗</span>
+        </button>
+      </div>
+      <div></div>
+    </section>
+
+    <!-- HALAMAN KEDUA (DETAIL - TETAP UTUH) -->
+    <section class="details" id="details" aria-label="Detail mempelai" aria-hidden="true">
+      <header class="details-header">
+        <p class="mini-label">Undangan Pernikahan</p>
+        <h2 class="header-names">Rouf & Eka</h2>
+        <p class="header-date">MINGGU, 22 NOVEMBER 2026</p>
+      </header>
+      <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
+      <p class="arabic-greeting" lang="ar">السلام عليكم ورحمة الله وبركاته</p>
+      <h2 class="greeting">Assalamu’alaikum<br>Warahmatullahi Wabarakatuh</h2>
+      <p class="intro">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri acara pernikahan putra dan putri kami.</p>
+
+      <div class="section-label">Kedua Mempelai</div>
+      <article class="couple-card">
+        <p class="role">Mempelai Pria</p>
+        <h3 class="couple-name">Muhammad Roúf</h3>
+        <p class="parents">Putra pertama dari<br><strong>Bpk. Kosim dan Ibu Ponisih</strong></p>
+      </article>
+      <div class="ampersand" aria-hidden="true">&</div>
+      <article class="couple-card">
+        <p class="role">Mempelai Wanita</p>
+        <h3 class="couple-name">Eka Kalista Nur Agustin</h3>
+        <p class="parents">Putri pertama dari<br><strong>Bpk. Karsidi dan Ibu Mukariyah</strong></p>
+      </article>
+      <footer class="closing">
+        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara(i) berkenan hadir serta memberikan doa restu.
+        <strong>Terima kasih</strong>
+      </footer>
+      <button class="back-button" id="backToCover" type="button">↑ Kembali ke sampul</button>
+    </section>
+  </main>
+  
+  <script>
+    const cover = document.getElementById("cover");
+    const details = document.getElementById("details");
+    const openButton = document.getElementById("openInvitation");
+    const backButton = document.getElementById("backToCover");
+
+    openButton.addEventListener("click", () => {
+      cover.style.display = "none";
+      details.classList.add("visible");
+      details.setAttribute("aria-hidden", "false");
+      document.getElementById("invitation").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    backButton.addEventListener("click", () => {
+      details.classList.remove("visible");
+      details.setAttribute("aria-hidden", "true");
+      cover.style.display = "flex";
+      document.getElementById("invitation").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>
