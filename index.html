@@ -567,6 +567,39 @@
       margin-top: 2px;
     }
 
+    /* --- STYLING UNTUK SLIDE TERAKHIR DENGAN TEXTBOX --- */
+    .plain-closing-slide {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px 10px;
+      overflow-y: auto;
+    }
+
+    .closing-textbox {
+      width: 100%;
+      background: rgba(70, 38, 16, 0.85);
+      border: 1px solid rgba(198, 166, 106, 0.6);
+      border-radius: 12px;
+      padding: 14px 12px;
+      backdrop-filter: blur(4px);
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .closing-text-main {
+      font-size: 0.65rem;
+      line-height: 1.55;
+      color: var(--cream);
+    }
+
     /* --- STYLING UNTUK SLIDE 5 (FOTO & COUNTDOWN TANPA SHADOW) --- */
     .photo-slide-container {
       width: 100%;
@@ -728,7 +761,7 @@
             </div>
           </div>
 
-          <!-- SLIDE 2 (Profil Mempelai dengan Ukuran Font Diperbesar) -->
+          <!-- SLIDE 2 (Profil Mempelai) -->
           <div class="swipe-slide">
             <div class="slide-content-box animate-in delay-1">
               <p class="greeting-text">Assalamualaikum Wr Wb</p>
@@ -857,12 +890,14 @@
             </div>
           </div>
 
-          <!-- SLIDE 6 (Slide Penutup dengan Contentbox) -->
+          <!-- SLIDE 6 (Slide Penutup dengan Textbox) -->
           <div class="swipe-slide">
-            <div class="slide-content-box align-top animate-in delay-1" style="justify-content: center; padding: 20px 16px;">
-              <p style="font-size: 0.72rem; line-height: 1.6; color: var(--cream); text-align: justify;">
-                Pertama dari lubuk hati kami yang paling dalam, mengucapkan banyak terimakasih untuk saudara, sahabat dan teman2 semua sebab telah berlapang hati menerima undangan dari kami, niat dari hati kami berdua memberikan kabar kepada teman2 semua bahwa saya bersama pasangan akan melangsungkan acara pernikahan untuk melambangkan betapa berharap ridho dari Allah SWT. yang sangat kami nantikan di setiap do'a dimana belum bisa melaksanakan perintah2 nya dengan sempurna, maka dengan adanya ikatan suci ini kami bisa berjalan beriringan saling menguatkan, saling menasehati, dan saling berbagi suka duka bersama untuk lebih ikhlas bertapak di jalan yang di ridhoi Allah SWT. bila berkenan hati, saya mengundang sahabat sekalian untuk ikut serta merta dalam lingkup kebahagiaan yang kami sematkan...💐
-              </p>
+            <div class="plain-closing-slide animate-in delay-1">
+              <div class="closing-textbox">
+                <p class="closing-text-main">
+                  Pertama dari lubuk hati kami yang paling dalam, mengucapkan banyak terimakasih untuk saudara, sahabat dan teman2 semua sebab telah berlapang hati menerima undangan dari kami, niat dari hati kami berdua memberikan kabar kepada teman2 semua bahwa saya bersama pasangan akan melangsungkan acara pernikahan untuk melambangkan betapa berharap ridho dari Allah SWT. yang sangat kami nantikan di setiap do'a dimana belum bisa melaksanakan perintah2 nya dengan sempurna, maka dengan adanya ikatan suci ini kami bisa berjalan beriringan saling menguatkan, saling menasehati, dan saling berbagi suka duka bersama untuk lebih ikhlas bertapak di jalan yang di ridhoi Allah SWT. bila berkenan hati, saya mengundang sahabat sekalian untuk ikut serta merta dalam lingkup kebahagiaan yang kami sematkan...💐
+                </p>
+              </div>
             </div>
           </div>
 
