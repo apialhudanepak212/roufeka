@@ -411,7 +411,7 @@
       opacity: 0.88;
       border: 1px solid #FFD796;
       border-radius: 12px;
-      padding: 14px 14px;
+      padding: 18px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -469,32 +469,32 @@
       font-style: italic;
     }
 
-    /* --- STYLING AGENDA ACARA (SLIDE 3) DENGAN FONT YANG DIPERKECIL --- */
-    .event-card-3 {
+    /* Styling Agenda Acara (Slide 3) - Diperbesar Ukuran Teks & Spasinya */
+    .event-card {
       width: 100%;
-      margin: 2px 0;
-      padding: 3px 6px;
+      margin: 6px 0;
+      padding: 8px 10px;
       background: rgba(40, 20, 10, 0.35);
-      border-radius: 6px;
-      border: 1px solid rgba(198, 166, 106, 0.2);
+      border-radius: 8px;
+      border: 1px solid rgba(198, 166, 106, 0.25);
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .event-title-3 {
-      font-size: 0.48rem;
-      letter-spacing: 0.2em;
+    .event-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
       color: #FFD796;
       text-transform: uppercase;
       font-weight: 700;
-      margin-bottom: 1px;
+      margin-bottom: 4px;
       position: relative;
       width: 100%;
-      padding-bottom: 1px;
+      padding-bottom: 3px;
     }
-    .event-title-3::after {
+    .event-title::after {
       content: "";
       position: absolute;
       bottom: 0;
@@ -504,47 +504,47 @@
       background: rgba(198, 166, 106, 0.4);
     }
 
-    .event-date-large-3 {
+    .event-date-large {
       font-family: "Cormorant Garamond", serif;
-      font-size: 0.7rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--cream);
       letter-spacing: 0.1em;
-      margin: 1px 0;
+      margin: 2px 0;
     }
 
-    .event-time-sub-3 {
-      font-size: 0.45rem;
+    .event-time-sub {
+      font-size: 0.68rem;
       color: #e7d6ae;
       letter-spacing: 0.08em;
-      margin-bottom: 2px;
+      margin-bottom: 5px;
     }
 
-    .map-btn-3 {
+    .map-btn {
       display: inline-block;
-      width: 65%;
-      max-width: 110px;
-      padding: 2px 5px;
+      width: 75%;
+      max-width: 140px;
+      padding: 4px 10px;
       background: linear-gradient(135deg, #f7dfa5, #d9b36c);
       color: #2b1708;
-      font-size: 0.42rem;
+      font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-decoration: none;
       border-radius: 999px;
-      margin: 1px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      margin: 3px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       transition: transform 0.2s ease;
     }
-    .map-btn-3:hover {
+    .map-btn:hover {
       transform: scale(1.03);
     }
 
-    .event-address-3 {
-      font-size: 0.42rem;
+    .event-address {
+      font-size: 0.58rem;
       color: #deded5;
-      line-height: 1.2;
-      margin-top: 1px;
+      line-height: 1.35;
+      margin-top: 3px;
     }
 
     /* --- STYLING UNTUK SLIDE 5 (FOTO & COUNTDOWN TANPA SHADOW) --- */
@@ -728,36 +728,36 @@
             </div>
           </div>
 
-          <!-- SLIDE 3 (Waktu & Lokasi Acara - Font Diperkecil) -->
+          <!-- SLIDE 3 (Waktu & Lokasi Acara - Ukuran Teks & Spasi Diperbesar) -->
           <div class="swipe-slide">
-            <div class="slide-content-box animate-in delay-1 align-top" style="justify-content: flex-start; padding-top: 10px; gap: 4px;">
-              <h3 class="slide-title" style="margin-bottom: 2px; font-size: 0.78rem; border-bottom: 1px solid rgba(198, 166, 106, 0.4); width: 85%; padding-bottom: 2px; color: #f7f3ea; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.18em;">Waktu & Lokasi Acara</h3>
+            <div class="slide-content-box animate-in delay-1" style="justify-content: space-between; padding: 12px 14px;">
+              <h3 class="slide-title" style="margin-bottom: 4px; font-size: 1.05rem; border-bottom: 1px solid rgba(198, 166, 106, 0.4); width: 90%; padding-bottom: 4px; color: #f7f3ea; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.18em;">Waktu & Lokasi Acara</h3>
               
               <!-- Akad Nikah -->
-              <div class="event-card-3">
-                <p class="event-title-3">AKAD NIKAH</p>
-                <p class="event-date-large-3">22 NOVEMBER 2026</p>
-                <p class="event-time-sub-3">Ahad, 06:00 WIB - Selesai</p>
-                <a href="https://maps.app.goo.gl/a9PHLuthgt5w7Urc9" target="_blank" class="map-btn-3">LIHAT LOKASI</a>
-                <p class="event-address-3">Kujon RT 3/RW 2, Ngargogondo, Borobudur, Magelang</p>
+              <div class="event-card">
+                <p class="event-title">AKAD NIKAH</p>
+                <p class="event-date-large">22 NOVEMBER 2026</p>
+                <p class="event-time-sub">Ahad, 06:00 WIB - Selesai</p>
+                <a href="https://maps.app.goo.gl/a9PHLuthgt5w7Urc9" target="_blank" class="map-btn">LIHAT LOKASI</a>
+                <p class="event-address">Kujon RT 3/RW 2, Ngargogondo, Borobudur, Magelang</p>
               </div>
 
               <!-- Resepsi -->
-              <div class="event-card-3">
-                <p class="event-title-3">RESEPSI</p>
-                <p class="event-date-large-3">22 NOVEMBER 2026</p>
-                <p class="event-time-sub-3">Ahad, 07:30 WIB - Selesai</p>
-                <a href="https://maps.app.goo.gl/a9PHLuthgt5w7Urc9" target="_blank" class="map-btn-3">LIHAT LOKASI</a>
-                <p class="event-address-3">Kujon RT 3/RW 2, Ngargogondo, Borobudur, Magelang</p>
+              <div class="event-card">
+                <p class="event-title">RESEPSI</p>
+                <p class="event-date-large">22 NOVEMBER 2026</p>
+                <p class="event-time-sub">Ahad, 07:30 WIB - Selesai</p>
+                <a href="https://maps.app.goo.gl/a9PHLuthgt5w7Urc9" target="_blank" class="map-btn">LIHAT LOKASI</a>
+                <p class="event-address">Kujon RT 3/RW 2, Ngargogondo, Borobudur, Magelang</p>
               </div>
 
               <!-- Ngunduh Mantu -->
-              <div class="event-card-3">
-                <p class="event-title-3">NGUNDUH MANTU</p>
-                <p class="event-date-large-3">22 NOVEMBER 2026</p>
-                <p class="event-time-sub-3">Ahad, 14:00 WIB - Selesai</p>
-                <a href="https://maps.app.goo.gl/oM1KkV6oywPuC9vD8" target="_blank" class="map-btn-3">LIHAT LOKASI</a>
-                <p class="event-address-3">Ngaglik RT 3/RW 3, Bulus, Gebang, Purworejo</p>
+              <div class="event-card">
+                <p class="event-title">NGUNDUH MANTU</p>
+                <p class="event-date-large">22 NOVEMBER 2026</p>
+                <p class="event-time-sub">Ahad, 14:00 WIB - Selesai</p>
+                <a href="https://maps.app.goo.gl/oM1KkV6oywPuC9vD8" target="_blank" class="map-btn">LIHAT LOKASI</a>
+                <p class="event-address">Ngaglik RT 3/RW 3, Bulus, Gebang, Purworejo</p>
               </div>
 
             </div>
