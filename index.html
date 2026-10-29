@@ -567,7 +567,7 @@
       margin-top: 2px;
     }
 
-    /* --- STYLING UNTUK SLIDE TERAKHIR TANPA TEXTBOX --- */
+    /* --- STYLING UNTUK SLIDE TERAKHIR --- */
     .plain-closing-slide {
       width: 100%;
       height: 100%;
@@ -580,9 +580,32 @@
       overflow-y: auto;
     }
 
+    .closing-slide-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      color: #FFD796;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+      position: relative;
+      width: 85%;
+      padding-bottom: 4px;
+    }
+
+    .closing-slide-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 20%;
+      right: 20%;
+      height: 1px;
+      background: rgba(198, 166, 106, 0.4);
+    }
+
     .closing-text-main {
-      font-size: 0.6rem;
-      line-height: 1.5;
+      font-size: 0.58rem;
+      line-height: 1.45;
       color: var(--cream);
       margin-bottom: 8px;
     }
@@ -899,9 +922,11 @@
             </div>
           </div>
 
-          <!-- SLIDE 6 (Slide Penutup Tanpa Textbox) -->
+          <!-- SLIDE 6 (Slide Penutup dengan Judul Baru) -->
           <div class="swipe-slide">
             <div class="plain-closing-slide animate-in delay-1">
+              <h3 class="closing-slide-title">Dari kami untuk teman-teman,</h3>
+              
               <p class="closing-text-main">
                 Pertama dari lubuk hati kami yang paling dalam, mengucapkan banyak terimakasih untuk saudara, sahabat dan teman2 semua sebab telah berlapang hati menerima undangan dari kami, niat dari hati kami berdua memberikan kabar kepada teman2 semua bahwa saya bersama pasangan akan melangsungkan acara pernikahan untuk melambangkan betapa berharap ridho dari Allah SWT. yang sangat kami nantikan di setiap do'a dimana belum bisa melaksanakan perintah2 nya dengan sempurna, maka dengan adanya ikatan suci ini kami bisa berjalan beriringan saling menguatkan, saling menasehati, dan saling berbagi suka duka bersama untuk lebih ikhlas bertapak di jalan yang di ridhoi Allah SWT. bila berkenan hati, saya mengundang sahabat sekalian untuk ikut serta merta dalam lingkup kebahagiaan yang kami sematkan...💐
               </p>
