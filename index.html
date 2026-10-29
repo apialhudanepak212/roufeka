@@ -419,6 +419,12 @@
       overflow-y: auto;
     }
 
+    /* Kelas khusus untuk Slide 4 agar isi contentbox berada di bagian atas (top) */
+    .slide-content-box.align-top {
+      justify-content: flex-start;
+      padding-top: 22px;
+    }
+
     .greeting-text {
       font-family: "JawaPalsu", cursive, serif;
       font-size: 1.1rem;
@@ -570,7 +576,7 @@
       padding: 10px 8px;
       text-align: center;
       backdrop-filter: blur(4px);
-      box-shadow: none; /* Shadow dihilangkan sesuai permintaan */
+      box-shadow: none;
     }
 
     .countdown-title {
@@ -764,25 +770,25 @@
             </div>
           </div>
 
-          <!-- SLIDE 4 (Penutup & Doa Restu) -->
+          <!-- SLIDE 4 (Penutup & Doa Restu - Konten di Atas/Top) -->
           <div class="swipe-slide">
-            <div class="slide-content-box animate-in delay-1" style="justify-content: center; padding: 24px 20px;">
-              <p class="desc-text" style="font-size: 0.78rem; line-height: 1.6; margin-bottom: 16px;">
+            <div class="slide-content-box align-top animate-in delay-1">
+              <p class="desc-text" style="font-size: 0.78rem; line-height: 1.6; margin-bottom: 14px;">
                 Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu kepada kedua mempelai.
               </p>
               
-              <p class="greeting-text" style="font-size: 1.25rem; margin-bottom: 14px;">Wassalamualaikum Wr Wb</p>
+              <p class="greeting-text" style="font-size: 1.2rem; margin-bottom: 12px;">Wassalamualaikum Wr Wb</p>
               
-              <div style="font-size: 0.7rem; color: var(--gold-light); letter-spacing: 0.1em; margin-bottom: 6px; text-transform: uppercase;">
+              <div style="font-size: 0.65rem; color: var(--gold-light); letter-spacing: 0.1em; margin-bottom: 4px; text-transform: uppercase;">
                 Kami yang berbahagia,
               </div>
               
-              <p class="person-parents" style="font-size: 0.72rem; line-height: 1.5; color: var(--cream); margin-bottom: 10px;">
+              <p class="person-parents" style="font-size: 0.7rem; line-height: 1.45; color: var(--cream); margin-bottom: 8px;">
                 Kel. Bapak Kosim & Ibu Ponisih<br>
                 Kel. Bapak Karsidi & Ibu Mukariyah
               </p>
 
-              <h4 class="person-name" style="font-size: 1.5rem; margin-top: 4px;">Ro'uf & Eka</h4>
+              <h4 class="person-name" style="font-size: 1.4rem; margin-top: 2px;">Ro'uf & Eka</h4>
             </div>
           </div>
 
