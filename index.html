@@ -599,6 +599,24 @@
       background: rgba(198, 166, 106, 0.4);
     }
 
+    /* Styling Gambar Hiasan Atas dan Bawah pada Slide Terakhir */
+    .closing-img-atas {
+      width: 40px;
+      max-height: 35px;
+      object-fit: contain;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    }
+
+    .closing-img-bawah {
+      width: 40px;
+      max-height: 35px;
+      object-fit: contain;
+      margin-top: 8px;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    }
+
     .closing-text-main {
       font-size: 0.58rem;
       line-height: 1.45;
@@ -918,9 +936,12 @@
             </div>
           </div>
 
-          <!-- SLIDE 6 (Slide Penutup dengan Judul Baru) -->
+          <!-- SLIDE 6 (Slide Penutup dengan Gambar Atas & Bawah) -->
           <div class="swipe-slide">
             <div class="plain-closing-slide animate-in">
+              <!-- Gambar Hiasan Atas -->
+              <img src="atas.png" alt="Hiasan Atas" class="closing-img-atas" onerror="this.style.display='none'">
+              
               <h3 class="closing-slide-title">Dari kami untuk teman-teman,</h3>
               
               <p class="closing-text-main">
@@ -931,6 +952,9 @@
                 dengan tulus hati memohon Do'a dan Restu dari saudara, sahabat, dan teman-teman yang kami sayangi❣️
               </p>
               
+              <!-- Gambar Hiasan Bawah -->
+              <img src="bawah.png" alt="Hiasan Bawah" class="closing-img-bawah" onerror="this.style.display='none'">
+
               <div class="closing-regards">kami yang berbahagia</div>
               <h4 class="closing-names">Eka dan Ro'uf</h4>
             </div>
