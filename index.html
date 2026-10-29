@@ -567,7 +567,7 @@
       margin-top: 2px;
     }
 
-    /* --- STYLING UNTUK SLIDE TERAKHIR DENGAN TEXTBOX --- */
+    /* --- STYLING UNTUK SLIDE TERAKHIR DENGAN TEXTBOX & TAMBAHAN TEKS --- */
     .plain-closing-slide {
       width: 100%;
       height: 100%;
@@ -585,19 +585,42 @@
       background: rgba(70, 38, 16, 0.85);
       border: 1px solid rgba(198, 166, 106, 0.6);
       border-radius: 12px;
-      padding: 14px 12px;
+      padding: 12px 10px;
       backdrop-filter: blur(4px);
       box-shadow: none;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+      margin-bottom: 8px;
     }
 
     .closing-text-main {
-      font-size: 0.65rem;
-      line-height: 1.55;
+      font-size: 0.58rem;
+      line-height: 1.45;
       color: var(--cream);
+    }
+
+    .closing-text-sub {
+      font-size: 0.58rem;
+      line-height: 1.4;
+      color: #FFD796;
+      margin-bottom: 6px;
+    }
+
+    .closing-regards {
+      font-size: 0.55rem;
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .closing-names {
+      font-family: "AstonScript", cursive;
+      font-size: 1.5rem;
+      color: #FFD796;
+      font-weight: bold;
     }
 
     /* --- STYLING UNTUK SLIDE 5 (FOTO & COUNTDOWN TANPA SHADOW) --- */
@@ -890,7 +913,7 @@
             </div>
           </div>
 
-          <!-- SLIDE 6 (Slide Penutup dengan Textbox) -->
+          <!-- SLIDE 6 (Slide Penutup dengan Textbox & Teks Tambahan di Bawahnya) -->
           <div class="swipe-slide">
             <div class="plain-closing-slide animate-in delay-1">
               <div class="closing-textbox">
@@ -898,6 +921,13 @@
                   Pertama dari lubuk hati kami yang paling dalam, mengucapkan banyak terimakasih untuk saudara, sahabat dan teman2 semua sebab telah berlapang hati menerima undangan dari kami, niat dari hati kami berdua memberikan kabar kepada teman2 semua bahwa saya bersama pasangan akan melangsungkan acara pernikahan untuk melambangkan betapa berharap ridho dari Allah SWT. yang sangat kami nantikan di setiap do'a dimana belum bisa melaksanakan perintah2 nya dengan sempurna, maka dengan adanya ikatan suci ini kami bisa berjalan beriringan saling menguatkan, saling menasehati, dan saling berbagi suka duka bersama untuk lebih ikhlas bertapak di jalan yang di ridhoi Allah SWT. bila berkenan hati, saya mengundang sahabat sekalian untuk ikut serta merta dalam lingkup kebahagiaan yang kami sematkan...💐
                 </p>
               </div>
+
+              <p class="closing-text-sub">
+                dengan tulus hati memohon Do'a dan Restu dari saudara, sahabat, dan teman-teman yang kami sayangi❣️
+              </p>
+              
+              <div class="closing-regards">kami yang berbahagia</div>
+              <h4 class="closing-names">Eka dan Ro'uf</h4>
             </div>
           </div>
 
