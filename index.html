@@ -292,21 +292,17 @@
       padding: 5px 12px;
     }
 
-    /* --- DEFINISI ANIMASI MASUK KONTEN (FADE & ZOOM HALUS) --- */
+    /* --- DEFINISI ANIMASI MASUK KONTEN (FADE & SLIDE HALUS) --- */
     .animate-in {
       opacity: 0;
-      transform: translateY(15px) scale(0.97);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .swipe-slide.active-slide .animate-in {
       opacity: 1;
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
-
-    .swipe-slide.active-slide .delay-1 { transition-delay: 0.1s; }
-    .swipe-slide.active-slide .delay-2 { transition-delay: 0.2s; }
-    .swipe-slide.active-slide .delay-3 { transition-delay: 0.3s; }
 
     /* Styling Elemen Slide 1 (Wayang) */
     .top-section {
@@ -778,16 +774,16 @@
           
           <!-- SLIDE 1 (Wayang & Nama) -->
           <div class="swipe-slide active-slide">
-            <div class="top-section animate-in delay-1">
+            <div class="top-section animate-in">
               <img src="gunungan.png" alt="Ornamen gunungan wayang" class="gunungan-img" onerror="this.style.display='none'">
               <h2 class="wedding-invitation-title">WEDDING INVITATION</h2>
             </div>
             
-            <div class="wayang-container animate-in delay-2">
+            <div class="wayang-container animate-in">
               <img src="wayang.png" alt="Ilustrasi Wayang" class="wayang-img" onerror="this.style.display='none'">
             </div>
 
-            <div class="couple-textbox animate-in delay-3">
+            <div class="couple-textbox animate-in">
               <h3 class="couple-names-aston">Rouf & Eka</h3>
               <p class="couple-date-sub">22.11.2026</p>
             </div>
@@ -795,7 +791,7 @@
 
           <!-- SLIDE 2 (Profil Mempelai) -->
           <div class="swipe-slide">
-            <div class="slide-content-box animate-in delay-1">
+            <div class="slide-content-box animate-in">
               <p class="greeting-text">Assalamualaikum Wr Wb</p>
               <p class="desc-text">Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara(i) untuk menghadiri acara pernikahan putra-putri kami:</p>
               
@@ -820,7 +816,7 @@
 
           <!-- SLIDE 3 (Waktu & Lokasi Acara) -->
           <div class="swipe-slide">
-            <div class="slide-content-box align-top animate-in delay-1" style="padding-top: 14px;">
+            <div class="slide-content-box align-top animate-in" style="padding-top: 14px;">
               <h3 class="slide-title" style="margin-bottom: 6px; font-size: 1.05rem; border-bottom: 1px solid rgba(198, 166, 106, 0.4); width: 90%; padding-bottom: 4px; color: #f7f3ea; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.18em;">Waktu & Lokasi Acara</h3>
               
               <!-- Akad Nikah -->
@@ -855,7 +851,7 @@
 
           <!-- SLIDE 4 (Mauhidhoh Hasanah, Penutup & Doa Restu) -->
           <div class="swipe-slide">
-            <div class="slide-content-box align-top animate-in delay-1" style="padding-top: 14px;">
+            <div class="slide-content-box align-top animate-in" style="padding-top: 14px;">
               
               <!-- Bagian Mauhidhoh Hasanah Sesuai Referensi Gambar -->
               <h3 class="slide-title" style="margin-bottom: 2px; font-size: 0.95rem; border-bottom: 1px solid rgba(198, 166, 106, 0.4); width: 85%; padding-bottom: 3px; color: #f7f3ea; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.18em;">MAUIDHOH HASANAH</h3>
@@ -893,7 +889,7 @@
 
           <!-- SLIDE 5 (Foto Mempelai & Countdown Tanpa Shadow) -->
           <div class="swipe-slide">
-            <div class="photo-slide-container animate-in delay-1">
+            <div class="photo-slide-container animate-in">
               <img src="fotomempelai.png" alt="Foto Mempelai" class="mempelai-photo" onerror="this.style.display='none'">
               
               <div class="countdown-box">
@@ -924,7 +920,7 @@
 
           <!-- SLIDE 6 (Slide Penutup dengan Judul Baru) -->
           <div class="swipe-slide">
-            <div class="plain-closing-slide animate-in delay-1">
+            <div class="plain-closing-slide animate-in">
               <h3 class="closing-slide-title">Dari kami untuk teman-teman,</h3>
               
               <p class="closing-text-main">
