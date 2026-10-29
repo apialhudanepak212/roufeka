@@ -411,7 +411,7 @@
       opacity: 0.88;
       border: 1px solid #FFD796;
       border-radius: 12px;
-      padding: 18px 16px;
+      padding: 16px 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -426,22 +426,22 @@
 
     .greeting-text {
       font-family: "JawaPalsu", cursive, serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #FFD796;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .desc-text {
-      font-size: 0.68rem;
-      line-height: 1.4;
+      font-size: 0.62rem;
+      line-height: 1.35;
       color: #deded5;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .person-card {
       width: 100%;
-      margin: 2px 0;
-      padding: 5px;
+      margin: 1px 0;
+      padding: 4px;
       background: rgba(40, 20, 10, 0.35);
       border-radius: 8px;
       border: 1px solid rgba(198, 166, 106, 0.2);
@@ -449,24 +449,42 @@
 
     .person-name {
       font-family: "AstonScript", cursive;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: #FFD796;
       margin: 1px 0;
       font-weight: bold;
     }
 
     .person-parents {
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       color: #d5d4ca;
-      line-height: 1.25;
+      line-height: 1.2;
     }
 
     .slide-ampersand {
       font-family: "Cormorant Garamond", serif;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: var(--gold-light);
       margin: 0;
       font-style: italic;
+    }
+
+    /* Styling untuk Foto Judul di Slide 2 */
+    .foto-judul-container {
+      width: 100%;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+      min-height: 60px;
+    }
+
+    .foto-judul {
+      max-width: 85%;
+      max-height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
     }
 
     /* Styling Agenda Acara (Slide 3) - Align Top & Spasi Proporsional */
@@ -751,7 +769,7 @@
             </div>
           </div>
 
-          <!-- SLIDE 2 (Profil Mempelai) -->
+          <!-- SLIDE 2 (Profil Mempelai + fotojudul.png di bagian bawah) -->
           <div class="swipe-slide">
             <div class="slide-content-box animate-in delay-1">
               <p class="greeting-text">Assalamualaikum Wr Wb</p>
@@ -767,6 +785,11 @@
               <div class="person-card">
                 <h4 class="person-name">Eka Kalista Nur Agustin</h4>
                 <p class="person-parents">Putri pertama dari<br>Bpk. Karsidi & Ibu Mukariyah</p>
+              </div>
+
+              <!-- FOTO JUDUL DI RUANG KOSONG BAWAH -->
+              <div class="foto-judul-container">
+                <img src="fotojudul.png" alt="Foto Judul" class="foto-judul" onerror="this.style.display='none'">
               </div>
             </div>
           </div>
